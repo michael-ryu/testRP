@@ -102,51 +102,53 @@
           </svg>
         </button>
       </router-link>
-      <button class="tab_button tab_none_select">
-        <!-- tag anlyzer svg -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          class="tab_icon"
-        >
-          <path
-            data-name="tag_anlyzer_1"
-            style="fill: none"
-            d="M0 0h18v18H0z"
-          />
-          <path
-            data-name="tag_anlyzer_2"
-            d="M-3193-1695h-16v-16h16v16zm-5.793-10.768a.408.408 0 0 0-.3.123.43.43 0 0 0-.13.3.376.376 0 0 0 .116.3l2.419 2.419-2.433 2.433a.406.406 0 0 0-.124.3.4.4 0 0 0 .124.3.423.423 0 0 0 .289.13h.017a.373.373 0 0 0 .271-.116l2.75-2.75a.4.4 0 0 0 .124-.289.4.4 0 0 0-.124-.289l-2.708-2.722a.4.4 0 0 0-.291-.139zm-4.371-.028a.4.4 0 0 0-.3.124l-2.75 2.749a.4.4 0 0 0-.123.289.4.4 0 0 0 .123.289l2.721 2.708a.408.408 0 0 0 .3.123.408.408 0 0 0 .3-.123.4.4 0 0 0 .123-.289.4.4 0 0 0-.123-.289l-2.419-2.419 2.446-2.446a.406.406 0 0 0 .124-.3.4.4 0 0 0-.124-.3.4.4 0 0 0-.299-.12z"
-            transform="translate(3210 1712)"
-          />
-        </svg>
+      <router-link to="/tag">
+        <button class="tab_button tab_none_select">
+          <!-- tag anlyzer svg -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            class="tab_icon"
+          >
+            <path
+              data-name="tag_anlyzer_1"
+              style="fill: none"
+              d="M0 0h18v18H0z"
+            />
+            <path
+              data-name="tag_anlyzer_2"
+              d="M-3193-1695h-16v-16h16v16zm-5.793-10.768a.408.408 0 0 0-.3.123.43.43 0 0 0-.13.3.376.376 0 0 0 .116.3l2.419 2.419-2.433 2.433a.406.406 0 0 0-.124.3.4.4 0 0 0 .124.3.423.423 0 0 0 .289.13h.017a.373.373 0 0 0 .271-.116l2.75-2.75a.4.4 0 0 0 .124-.289.4.4 0 0 0-.124-.289l-2.708-2.722a.4.4 0 0 0-.291-.139zm-4.371-.028a.4.4 0 0 0-.3.124l-2.75 2.749a.4.4 0 0 0-.123.289.4.4 0 0 0 .123.289l2.721 2.708a.408.408 0 0 0 .3.123.408.408 0 0 0 .3-.123.4.4 0 0 0 .123-.289.4.4 0 0 0-.123-.289l-2.419-2.419 2.446-2.446a.406.406 0 0 0 .124-.3.4.4 0 0 0-.124-.3.4.4 0 0 0-.299-.12z"
+              transform="translate(3210 1712)"
+            />
+          </svg>
 
-        <span>Tag Anlyzer</span>
-        <!-- 닫기 svg -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          class="tab_close"
-        >
-          <path data-name="close" style="fill: none" d="M0 0h18v18H0z" />
-          <path
-            class="path"
-            data-name="close_1"
-            transform="translate(4 4)"
-            d="m0 0 10 10"
-          />
-          <path
-            class="path"
-            data-name="close_2"
-            transform="translate(4 4)"
-            d="M10 0 0 10"
-          />
-        </svg>
-      </button>
+          <span>Tag Anlyzer</span>
+          <!-- 닫기 svg -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            class="tab_close"
+          >
+            <path data-name="close" style="fill: none" d="M0 0h18v18H0z" />
+            <path
+              class="path"
+              data-name="close_1"
+              transform="translate(4 4)"
+              d="m0 0 10 10"
+            />
+            <path
+              class="path"
+              data-name="close_2"
+              transform="translate(4 4)"
+              d="M10 0 0 10"
+            />
+          </svg>
+        </button>
+      </router-link>
       <button class="plus_wrap">
         <!-- plus svg -->
         <svg
@@ -1676,8 +1678,11 @@
 </style>
 <script>
 import Setting from "../components/SettingView.vue";
+import Tab from "../components/TabView.vue";
+
 export default {
   components: {
+    Tab,
     Setting,
   },
 };

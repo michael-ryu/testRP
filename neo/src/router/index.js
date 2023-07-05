@@ -24,6 +24,11 @@ const router = createRouter({
       name: "sql",
       component: () => import("../views/SqlView.vue"),
     },
+    {
+      path: "/tag",
+      name: "tag",
+      component: () => import("../views/TagView.vue"),
+    },
   ],
 });
 

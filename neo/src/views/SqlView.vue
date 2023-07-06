@@ -25,7 +25,7 @@
               />
             </svg>
           </button>
-          <button class="modal_btn">
+          <button @click="openModal" class="modal_btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -64,6 +64,248 @@
               />
             </svg>
           </button>
+          <!-- date modal background -->
+          <div class="backdrop" v-if="isModalOpen"></div>
+          <!-- date modal contents -->
+          <div class="date_modal" v-if="isModalOpen">
+            <div class="date_modal_content_wrap">
+              <div class="date_modal_title">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      data-name="사각형 1005"
+                      style="fill: none"
+                      d="M0 0h16v16H0z"
+                    />
+                    <path
+                      d="M123.617-870.55a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.554.224zm3.442 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm3.306 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm-9.2 6.106a1.119 1.119 0 0 1-.817-.35 1.119 1.119 0 0 1-.35-.817v-12.056a1.119 1.119 0 0 1 .35-.817 1.119 1.119 0 0 1 .817-.35h1.264V-880h1.264v1.167h6.611V-880h1.264v1.167h1.264a1.119 1.119 0 0 1 .817.35 1.119 1.119 0 0 1 .35.817v12.056a1.119 1.119 0 0 1-.35.817 1.119 1.119 0 0 1-.817.35zm0-1.167h11.667v-8.361h-11.665z"
+                      transform="translate(-119 880)"
+                      style="fill: #fff"
+                    />
+                  </svg>
+                  <span>Time Range</span>
+                </div>
+                <div>
+                  <button @click="closeModal">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                    >
+                      <path
+                        data-name="사각형 991"
+                        style="fill: none"
+                        d="M0 0h18v18H0z"
+                      />
+                      <path
+                        data-name="선 1"
+                        transform="translate(4 4)"
+                        style="stroke: #fff; stroke-width: 2px; fill: none"
+                        d="m0 0 10 10"
+                      />
+                      <path
+                        data-name="선 2"
+                        transform="translate(4 4)"
+                        style="stroke: #fff; stroke-width: 2px; fill: none"
+                        d="M10 0 0 10"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="date_modal_content">
+                <div class="date_modal_button_wrap">
+                  <div>
+                    <span>From</span>
+                  </div>
+                  <div>
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          data-name="사각형 1005"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          d="M123.617-870.55a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.554.224zm3.442 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm3.306 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm-9.2 6.106a1.119 1.119 0 0 1-.817-.35 1.119 1.119 0 0 1-.35-.817v-12.056a1.119 1.119 0 0 1 .35-.817 1.119 1.119 0 0 1 .817-.35h1.264V-880h1.264v1.167h6.611V-880h1.264v1.167h1.264a1.119 1.119 0 0 1 .817.35 1.119 1.119 0 0 1 .35.817v12.056a1.119 1.119 0 0 1-.35.817 1.119 1.119 0 0 1-.817.35zm0-1.167h11.667v-8.361h-11.665z"
+                          transform="translate(-119 880)"
+                        />
+                      </svg>
+                      <span>now-5m</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        class="modal_arrow"
+                      >
+                        <path
+                          data-name="사각형 991"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          data-name="패스 4101"
+                          d="m3533.373 1796.351 4 4 4-4"
+                          transform="translate(-3529.373 -1789.851)"
+                          class="modal_arrow_icon"
+                          style="
+                            stroke-linejoin: round;
+                            stroke-width: 1.5px;
+                            fill: none;
+                          "
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="date_modal_button_wrap">
+                  <div>
+                    <span>To</span>
+                  </div>
+                  <div>
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          data-name="사각형 1005"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          d="M123.617-870.55a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.554.224zm3.442 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm3.306 0a.752.752 0 0 1-.554-.224.753.753 0 0 1-.224-.554.753.753 0 0 1 .224-.554.753.753 0 0 1 .554-.224.753.753 0 0 1 .554.224.753.753 0 0 1 .224.554.753.753 0 0 1-.224.554.752.752 0 0 1-.555.224zm-9.2 6.106a1.119 1.119 0 0 1-.817-.35 1.119 1.119 0 0 1-.35-.817v-12.056a1.119 1.119 0 0 1 .35-.817 1.119 1.119 0 0 1 .817-.35h1.264V-880h1.264v1.167h6.611V-880h1.264v1.167h1.264a1.119 1.119 0 0 1 .817.35 1.119 1.119 0 0 1 .35.817v12.056a1.119 1.119 0 0 1-.35.817 1.119 1.119 0 0 1-.817.35zm0-1.167h11.667v-8.361h-11.665z"
+                          transform="translate(-119 880)"
+                        />
+                      </svg>
+                      <span>now</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        class="modal_arrow"
+                      >
+                        <path
+                          data-name="사각형 991"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          data-name="패스 4101"
+                          d="m3533.373 1796.351 4 4 4-4"
+                          transform="translate(-3529.373 -1789.851)"
+                          class="modal_arrow_icon"
+                          style="
+                            stroke-linejoin: round;
+                            stroke-width: 1.5px;
+                            fill: none;
+                          "
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="date_modal_button_wrap">
+                  <div>
+                    <span>Refreshing Every</span>
+                  </div>
+                  <div>
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          data-name="사각형 1005"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          d="M46.4-904.025v-4.94a.25.25 0 0 1 .137-.238.267.267 0 0 1 .284.018l3.824 2.452a.28.28 0 0 1 .128.238.28.28 0 0 1-.128.238l-3.824 2.452a.267.267 0 0 1-.284.018.25.25 0 0 1-.137-.238zm-5.306 1.61v1.94a.533.533 0 0 1-.156.393.533.533 0 0 1-.393.156.533.533 0 0 1-.393-.156.533.533 0 0 1-.156-.393v-3.275a.533.533 0 0 1 .156-.393.533.533 0 0 1 .393-.156h3.257a.533.533 0 0 1 .393.156.533.533 0 0 1 .156.393.533.533 0 0 1-.156.393.533.533 0 0 1-.393.156H41.9a7.553 7.553 0 0 0 2.69 2.7 6.993 6.993 0 0 0 3.586.961 6.615 6.615 0 0 0 3.705-1.1 6.738 6.738 0 0 0 2.5-2.928 1.28 1.28 0 0 1 .32-.439.523.523 0 0 1 .467-.11.429.429 0 0 1 .339.3.637.637 0 0 1-.046.5 7.859 7.859 0 0 1-2.9 3.541 7.664 7.664 0 0 1-4.382 1.327 8.077 8.077 0 0 1-4.044-1.034 8.571 8.571 0 0 1-3.035-2.932zm-.512-4.812a.447.447 0 0 1-.384-.174.563.563 0 0 1-.091-.43 7.132 7.132 0 0 1 .485-1.72 8.919 8.919 0 0 1 .887-1.574.58.58 0 0 1 .375-.265.435.435 0 0 1 .412.137.548.548 0 0 1 .183.439 1.06 1.06 0 0 1-.165.476 7.377 7.377 0 0 0-.659 1.208 6.933 6.933 0 0 0-.4 1.317.824.824 0 0 1-.22.421.57.57 0 0 1-.419.165zm6.77-6.733a.554.554 0 0 1-.174.421.878.878 0 0 1-.43.22 6.672 6.672 0 0 0-1.345.412 7.6 7.6 0 0 0-1.235.686.813.813 0 0 1-.457.146.555.555 0 0 1-.421-.2.432.432 0 0 1-.128-.393.561.561 0 0 1 .238-.375 7.843 7.843 0 0 1 1.583-.9 8.233 8.233 0 0 1 1.747-.494.592.592 0 0 1 .439.091.438.438 0 0 1 .187.385zm5.453 1.683a.525.525 0 0 1-.421.192.876.876 0 0 1-.457-.156 7.254 7.254 0 0 0-1.226-.677 6.86 6.86 0 0 0-1.336-.4.7.7 0 0 1-.421-.21.6.6 0 0 1-.165-.43.446.446 0 0 1 .174-.384.563.563 0 0 1 .43-.091 7.58 7.58 0 0 1 1.729.476 7.411 7.411 0 0 1 1.564.9.637.637 0 0 1 .256.375.416.416 0 0 1-.124.405zm2.708 5.05a.554.554 0 0 1-.421-.174.878.878 0 0 1-.22-.43 5.987 5.987 0 0 0-.43-1.345 8.824 8.824 0 0 0-.7-1.235.864.864 0 0 1-.156-.448.593.593 0 0 1 .174-.43.446.446 0 0 1 .4-.146.557.557 0 0 1 .366.238 8.448 8.448 0 0 1 .942 1.583 7.282 7.282 0 0 1 .521 1.766.592.592 0 0 1-.091.439.438.438 0 0 1-.382.182z"
+                          transform="translate(-40 914.444)"
+                        />
+                      </svg>
+                      <span>off</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        class="modal_arrow"
+                      >
+                        <path
+                          data-name="사각형 991"
+                          style="fill: none"
+                          d="M0 0h16v16H0z"
+                        />
+                        <path
+                          data-name="패스 4101"
+                          d="m3533.373 1796.351 4 4 4-4"
+                          transform="translate(-3529.373 -1789.851)"
+                          class="modal_arrow_icon"
+                          style="
+                            stroke-linejoin: round;
+                            stroke-width: 1.5px;
+                            fill: none;
+                          "
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="date_modal_quick_wrap">
+                <div class="date_modal_quick">
+                  <div>
+                    <span>Quick Range</span>
+                  </div>
+
+                  <div class="date_modal_quick_btn_wrap">
+                    <button>Last 2 days</button>
+                    <button>Last 7 days</button>
+                    <button>Last 30 days</button>
+                    <button>Last 90 days</button>
+                    <button>Last 6 Months</button>
+                    <button>Last 1 years</button>
+                    <button>Last 2 years</button>
+                    <button>Last 5 years</button>
+                  </div>
+                  <div class="date_modal_quick_btn_wrap">
+                    <button>Last 5 minutes</button>
+                    <button>Last 15 minutes</button>
+                    <button>Last 30 minutes</button>
+                    <button>Last 1 hour</button>
+                    <button>Last 3 hour</button>
+                    <button>Last 6 hour</button>
+                    <button>Last 9 hour</button>
+                    <button>Last 12 hour</button>
+                    <button>Last 24 hour</button>
+                  </div>
+                </div>
+              </div>
+              <div class="date_modal_apply_wrap">
+                <button>Apply</button>
+                <button>Cancel</button>
+              </div>
+            </div>
+          </div>
           <button class="modal_btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -354,6 +596,135 @@
       display: flex;
       align-items: center;
       position: relative;
+      .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(38, 40, 49, 0.5);
+        z-index: 998;
+      }
+      .date_modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 540px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+        .date_modal_content_wrap {
+          .date_modal_title {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 0 45px 0;
+            padding: 0 16px;
+
+            span {
+              color: #fff;
+
+              font-family: Pretendard;
+              margin-left: 6px;
+              font-weight: 500;
+            }
+          }
+          .date_modal_content {
+            padding: 0 59px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            span {
+              font-family: Pretendard;
+              font-size: 16px;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.5);
+            }
+            button {
+              width: 260px;
+              height: 34px;
+              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+              border: solid 0.5px #fff;
+              background-color: rgba(38, 40, 49, 0.5);
+              border-radius: 8px;
+              &:hover {
+                span {
+                  color: rgba(255, 255, 255, 1);
+                }
+              }
+            }
+            .date_modal_button_wrap {
+              margin-bottom: 8px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              button {
+                display: flex;
+                align-items: center;
+                position: relative;
+                svg {
+                  padding: 0 10px;
+                }
+                .modal_arrow {
+                  position: absolute;
+                  right: 8px;
+                }
+              }
+            }
+          }
+          .date_modal_quick_wrap {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 32px 59px;
+            span {
+              color: rgba(255, 255, 255, 0.5);
+            }
+            .date_modal_quick {
+              display: flex;
+              justify-content: space-between;
+              .date_modal_quick_btn_wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                button {
+                  color: #4199ff;
+                  font-family: Pretendard;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+          .date_modal_apply_wrap {
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            button {
+              border: 0.5px solid rgba(255, 255, 255, 1);
+              width: 120px;
+              height: 40px;
+              margin: 40px 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: rgba(255, 255, 255, 1);
+              border-radius: 8px;
+              background-color: rgba(255, 255, 255, 0.5);
+              &:hover {
+                background-color: rgba(255, 255, 255, 1);
+                color: #404457;
+              }
+              &:first-child {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+
       button {
         svg {
           path {
@@ -365,14 +736,14 @@
         }
         &:hover {
           span {
-            color: #4199ff;
+            color: rgba(255, 255, 255, 1);
           }
           svg {
             path {
-              fill: #4199ff;
+              fill: rgba(255, 255, 255, 1);
             }
             .modal_arrow_icon {
-              stroke: #4199ff;
+              stroke: rgba(255, 255, 255, 1);
             }
           }
         }
@@ -402,7 +773,7 @@
           right: 0px;
         }
         &:hover {
-          border: solid 0.5px #4199ff;
+          border: solid 0.5px rgba(255, 255, 255, 1);
         }
       }
       .sql_save_btn {
@@ -438,7 +809,7 @@
         &:hover {
           svg {
             path {
-              fill: #4199ff;
+              fill: rgba(255, 255, 255, 1);
             }
           }
         }
@@ -576,6 +947,19 @@ export default {
   components: {
     Tab,
     Setting,
+  },
+  data() {
+    return {
+      isModalOpen: false, // 모달의 표시 여부를 나타내는 상태 변수
+    };
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
   },
 };
 </script>

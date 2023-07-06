@@ -1464,6 +1464,15 @@
       img {
         padding: 0;
       }
+      &::after {
+        content: "";
+        background-color: rgba(255, 255, 255, 0.5);
+        width: 1px;
+        height: 24px;
+        position: absolute;
+        right: -1px;
+        z-index: 20;
+      }
     }
     .tab_select {
       color: #4199ff;
@@ -1471,7 +1480,7 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       position: relative;
-      z-index: 10;
+      z-index: 21;
       .tab_close {
         .path {
           fill: #4199ff;
@@ -1560,6 +1569,7 @@
         height: 24px;
         position: absolute;
         right: -1px;
+        z-index: 20;
       }
     }
     .plus_wrap {

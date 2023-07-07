@@ -29,15 +29,23 @@
       </div>
     </form>
     <div class="sns">
-      <a href="#"><img alt="" src="@/assets/image/logo_homepage.svg" /></a>
-      <a href="#"><img alt="" src="@/assets/image/logo_facebook.svg" /></a>
-      <a href="#"><img alt="" src="@/assets/image/logo_github.svg" /></a>
-      <a href="#"><img alt="" src="@/assets/image/logo_linkedin.svg" /></a>
-      <a href="#"><img alt="" src="@/assets/image/logo_slideshare.svg" /></a>
-      <a href="#"><img alt="" src="@/assets/image/logo_twitter.svg" /></a>
+      <a href="#"><Home></Home></a>
+      <a href="#"><Facebook></Facebook></a>
+      <a href="#"><Github></Github></a>
+      <a href="#"><Linkedin></Linkedin></a>
+      <a href="#"><Slideshare></Slideshare></a>
+      <a href="#"><Twitter></Twitter></a>
     </div>
   </div>
 </template>
+<script setup>
+import Home from "@/components/svg/Home.vue";
+import Facebook from "@/components/svg/Facebook.vue";
+import Github from "@/components/svg/Github.vue";
+import Linkedin from "@/components/svg/Linkedin.vue";
+import Slideshare from "@/components/svg/Slideshare.vue";
+import Twitter from "@/components/svg/Twitter.vue";
+</script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
 
@@ -193,5 +201,11 @@
   width: 420px;
   display: flex;
   justify-content: space-between;
+  svg {
+    fill: rgba(255, 255, 255, 0.5);
+    &:hover {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
 }
 </style>

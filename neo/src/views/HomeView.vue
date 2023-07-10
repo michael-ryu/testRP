@@ -1,61 +1,7 @@
 <template>
   <div class="outer">
     <!-- tab 부분 -->
-    <div class="tab">
-      <router-link to="/">
-        <button class="tab_button tab_logo">
-          <img src="@/assets/image/tab_logo.svg" />
-        </button>
-      </router-link>
-      <!-- 홈모양 svg -->
-      <router-link to="/home">
-        <button class="tab_button tab_select">
-          <div class="round_right_wrap">
-            <div class="round_right"></div>
-          </div>
-          <Tabhome></Tabhome>
-          <span>Welcome</span>
-          <!-- 닫기 svg -->
-          <Tabclose></Tabclose>
-          <div class="round_left_wrap">
-            <div class="round_left"></div>
-          </div>
-        </button>
-      </router-link>
-      <router-link to="/sql">
-        <button class="tab_button tab_none_select">
-          <!-- sql svg -->
-          <Tabsql></Tabsql>
-
-          <span>SQL</span>
-          <!-- 닫기 svg -->
-          <Tabclose></Tabclose>
-        </button>
-      </router-link>
-      <router-link to="/tag">
-        <button class="tab_button tab_none_select">
-          <!-- tag anlyzer svg -->
-          <Tabtag></Tabtag>
-
-          <span>Tag Anlyzer</span>
-          <!-- 닫기 svg -->
-          <Tabclose></Tabclose>
-        </button>
-      </router-link>
-      <button class="plus_wrap">
-        <!-- plus svg -->
-        <Tabplus></Tabplus>
-      </button>
-      <div>
-        <!-- 톱니바퀴 png & Setting box 바로가기-->
-        <router-link to="/setting">
-          <button class="setting_btn">
-            <img src="@/assets/image/btn_setting.png" />
-          </button>
-        </router-link>
-        <Setting />
-      </div>
-    </div>
+    <TabHome></TabHome>
     <div class="inner">
       <div class="title">
         <p class="main_title">Welcome</p>
@@ -127,17 +73,39 @@
   </div>
 </template>
 <script setup>
-import Tabhome from "@/components/svg/TabHome.vue";
-import Tabclose from "@/components/svg/TabClose.vue";
-import Tabsql from "@/components/svg/TabSql.vue";
-import Tabtag from "@/components/svg/TabTaganalyzer.vue";
-import Tabplus from "@/components/svg/TabPlus.vue";
+import TabHome from "@/components/TabHomeView.vue";
 import Sql from "@/components/svg/Sql.vue";
+import Gear from "@/components/svg/Gear.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
+button {
+  svg {
+    fill: rgba(255, 255, 255, 0.5);
+    path {
+      fill: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .dropdown {
+    stroke: rgba(255, 255, 255, 0.5);
+  }
+  &:hover {
+    .dropdown {
+      stroke: rgba(255, 255, 255, 1);
+    }
+    span {
+      color: rgba(255, 255, 255, 1);
+    }
+    svg {
+      fill: rgba(255, 255, 255, 1);
+      path {
+        fill: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
 .outer {
-  background-color: #262831;
+  background-color: #1b1c21;
   height: 100%;
 
   .tab {

@@ -60,6 +60,7 @@ import Twitter from "@/components/svg/Twitter.vue";
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% auto;
+  background-color: #1b1c21;
 }
 .input-form {
   align-items: center;

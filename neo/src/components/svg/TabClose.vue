@@ -4,6 +4,7 @@
     width="18"
     height="18"
     viewBox="0 0 18 18"
+    class="modal_close_btn"
   >
     <path
       data-name="사각형 991"

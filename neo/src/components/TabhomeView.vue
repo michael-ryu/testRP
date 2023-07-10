@@ -8,7 +8,7 @@
     </router-link>
     <!-- 홈모양 svg -->
     <router-link to="/home">
-      <button class="tab_button tab_none_select">
+      <button class="tab_button tab_select">
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
@@ -35,7 +35,7 @@
       </button>
     </router-link>
     <router-link to="/tag">
-      <button class="tab_button tab_select">
+      <button class="tab_button tab_none_select">
         <!-- tag anlyzer svg -->
         <div class="round_right_wrap">
           <div class="round_right"></div>
@@ -60,14 +60,46 @@
         <Gear></Gear>
       </button>
       <div v-if="isSettingVisible" class="setting_wrap">
-        <button class="setting_btn">
+        <button @click="openPrefferenceModal" class="setting_btn">
           <Prefference></Prefference>
           <span> Preferences… </span>
         </button>
-        <button class="setting_btn">
+        <div class="backdrop" v-if="isPrefferenceModalOpen"></div>
+        <div v-if="isPrefferenceModalOpen">
+          <div>
+            <div class="prefference_modal_wrap">
+              <div>
+                <Date></Date>
+                <span>Time Range</span>
+              </div>
+              <div>
+                <button @click="closePrefferenceModal">
+                  <TabClose></TabClose>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button @click="openLisenceModal" class="setting_btn">
           <License></License>
           <span> License </span>
         </button>
+        <div class="backdrop" v-if="isLisenceModalOpen"></div>
+        <div v-if="isLisenceModalOpen">
+          <div>
+            <div class="Lisence_modal_wrap">
+              <div>
+                <Date></Date>
+                <span>Time Range</span>
+              </div>
+              <div>
+                <button @click="closeLisenceModal">
+                  <TabClose></TabClose>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <button class="setting_btn">
           <Logout></Logout>
           <span> Logout </span>
@@ -308,6 +340,41 @@ import Plus from "@/components/svg/Plus.vue";
           }
         }
       }
+      .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(38, 40, 49, 0.5);
+        z-index: 998;
+      }
+      .prefference_modal_wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 540px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+      }
+      .Lisense_modal_wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 540px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+      }
     }
   }
 }
@@ -317,9 +384,23 @@ export default {
   data() {
     return {
       isSettingVisible: false,
+      isPrefferenceModalOpen: false,
+      isLisenceModalOpen: false,
     };
   },
   methods: {
+    openPrefferenceModal() {
+      this.isPrefferenceModalOpen = true;
+    },
+    closePrefferenceModal() {
+      this.isPrefferenceModalOpen = false;
+    },
+    openLisenceModal() {
+      this.isLisenceModalOpen = true;
+    },
+    closeLisenceModal() {
+      this.isLisenceModalOpen = false;
+    },
     toggleSetting() {
       this.isSettingVisible = !this.isSettingVisible;
     },

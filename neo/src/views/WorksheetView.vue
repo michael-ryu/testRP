@@ -1,19 +1,10 @@
 <template>
   <div class="outer">
     <!-- tab 부분 -->
-    <Tagtab />
+    <TagWorksheet />
     <div class="tag_tab">
-      <button @click="openModal" class="modal_btn">
-        <div>
-          <Date></Date>
-          <span> now-2d ~ now refresh every 10s </span>
-        </div>
-        <Dropdown></Dropdown>
-      </button>
-      <div class="backdrop" v-if="isModalOpen"></div>
-      <DateModal v-if="isModalOpen"></DateModal>
       <button class="refresh_btn">
-        <Refresh></Refresh>
+        <DoublePlay></DoublePlay>
       </button>
       <button class="tag_save_btn">
         <Save></Save>
@@ -22,174 +13,18 @@
         <Folder></Folder>
       </button>
     </div>
-    <div class="tag_table_wrap">
-      <div class="tag_table_subtab">
-        <div class="tag_chart_index">
-          <img src="@/assets/image/ic_tab_code_on.png" /><span
-            >CHART - 001</span
-          >
-        </div>
-        <div class="tag_chart_date">
-          <span>0000-00-00 00:00:00 ~ 0000-00-00 00:00:00</span>
-        </div>
-        <div>
-          <button>
-            <Refresh></Refresh>
-          </button>
-          <button>
-            <Gear></Gear>
-          </button>
-          <button>
-            <Bin></Bin>
-          </button>
-        </div>
-      </div>
-      <div class="tag_table">
-        <button class="tag_arrow">
-          <Previous></Previous>
-        </button>
-        <div class="tag_chart_img_wrap">
-          <img class="tag_chart_img" src="@/assets/image/img_chart_dark.png" />
-        </div>
-        <button class="tag_arrow">
-          <Next></Next>
-        </button>
-      </div>
-      <div class="tag_zoom_wrap">
-        <button>
-          <Zoomin4></Zoomin4>
-        </button>
-        <button>
-          <Zoomin2></Zoomin2>
-        </button>
-        <button>
-          <Focus></Focus>
-        </button>
-        <button>
-          <Zoomout2></Zoomout2>
-        </button>
-        <button>
-          <Zoomout4></Zoomout4>
-        </button>
-      </div>
-      <div class="tag_bar_wrap">
-        <div>
-          <img
-            class="tag_chart_bar"
-            src="@/assets/image/img_chartnavi_dark.png"
-          />
-        </div>
-      </div>
-    </div>
-
-    <button @click="openTagModal" class="tag_plus_wrap">
-      <Add></Add>
-    </button>
-    <div class="backdrop" v-if="isTagModalOpen"></div>
-    <div class="tag_modal" v-if="isTagModalOpen">
-      <div class="tag_modal_wrap">
-        <div class="tag_modal_title">
-          <div><TabTaganalyzer></TabTaganalyzer><span>New Chart</span></div>
-          <button @click="closeTagModal"><TabClose></TabClose></button>
-        </div>
-        <div class="tag_modal_contents_wrap">
-          <div class="tag_modal_contents">
-            <span>Table</span
-            ><button class="tag_modal_table_btn">
-              machloTchartBlack<Dropdown></Dropdown>
-            </button>
-          </div>
-          <p>* The table is show because the roll-up table is not generated.</p>
-          <div class="tag_modal_contents">
-            <span>Tag</span>
-            <div class="tag_modal_tag_btn_wrap">
-              <button class="tag_modal_tag_size_btn">
-                small<TabClose></TabClose></button
-              ><button class="tag_modal_tag_serch_btn">Search</button>
-            </div>
-          </div>
-          <div class="tag_modal_contents">
-            <span>Chart</span>
-            <div class="tag_modal_chart_wrap">
-              <button class="tag_modal_chart_btn">
-                <img src="@/assets/image/img_chart_01.png" /></button
-              ><button class="tag_modal_chart_btn">
-                <img src="@/assets/image/img_chart_02.png" /></button
-              ><button class="tag_modal_chart_btn last">
-                <img src="@/assets/image/img_chart_03.png" />
-              </button>
-            </div>
-          </div>
-          <div class="tag_modal_contents">
-            <div class="tag_modal_data_wrap">
-              <div class="tag_modal_data">
-                <p>TAG_0001</p>
-              </div>
-              <div class="tag_modal_data">
-                <div>
-                  TAG_0001<button class="tag_modal_data_btn">
-                    Average<Dropdown></Dropdown>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tag_modal_contents">
-            <div class="tag_modal_tag_add_tag_wrap">
-              <div class="tag_modal_data_add_btn_wrap">
-                <button class="tag_modal_data_tag_add_btn">
-                  <TagPrevious></TagPrevious>
-                </button>
-                <span>1</span>
-                <button class="tag_modal_data_tag_add_btn">
-                  <TagNext></TagNext>
-                </button>
-              </div>
-              <div>
-                <span>TOTAL : 1/1</span>
-              </div>
-            </div>
-            <div class="tag_modal_tag_add_tag_select_wrap">
-              <span>SELECT : 3</span>
-            </div>
-          </div>
-        </div>
-        <div class="tag_modal_footer">
-          <button class="tag_modal_footer_btn">OK</button>
-          <button class="tag_modal_footer_btn last">Cancel</button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script setup>
-import DateModal from "@/components/DateModal.vue";
-import Tagtab from "@/components/TagtabView.vue";
-import TabTaganalyzer from "@/components/svg/TabTaganalyzer.vue";
-import TabClose from "@/components/svg/TabClose.vue";
-import Date from "@/components/svg/Date.vue";
-import TagPrevious from "@/components/svg/TagPrevious.vue";
-import TagNext from "@/components/svg/TagNext.vue";
-import Chartimg1 from "@/components/svg/Chartimg1.vue";
-import Chartimg2 from "@/components/svg/Chartimg2.vue";
-import Chartimg3 from "@/components/svg/Chartimg3.vue";
+import TagWorksheet from "@/components/TabWorkSheetView.vue";
 import Dropdown from "@/components/svg/Dropdown.vue";
 import Refresh from "@/components/svg/Refresh.vue";
 import Save from "@/components/svg/Save.vue";
 import Folder from "@/components/svg/Folder.vue";
 import Bin from "@/components/svg/Bin.vue";
-import Gear from "@/components/svg/Gear.vue";
-import Zoomin4 from "@/components/svg/Zoomin4.vue";
-import Zoomin2 from "@/components/svg/Zoomin2.vue";
-import Focus from "@/components/svg/Focus.vue";
-import Zoomout2 from "@/components/svg/Zoomout2.vue";
-import Zoomout4 from "@/components/svg/Zoomout4.vue";
-import Add from "@/components/svg/Add.vue";
-import Local from "@/components/svg/Local.vue";
 import Up from "@/components/svg/Up.vue";
 import Down from "@/components/svg/Down.vue";
-import Setting from "../components/SettingView.vue";
-import Tab from "../components/TabView.vue";
+import DoublePlay from "@/components/svg/DoublePlay.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";

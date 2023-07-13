@@ -17,27 +17,37 @@
         </button>
         <button class="btn_box">
           <div class="btn_img_wrap">
-            <Sql></Sql>
+            <Tql></Tql>
           </div>
-          <p class="home_btn_text">SQL</p>
+          <p class="home_btn_text">TQL</p>
         </button>
         <button class="btn_box">
           <div class="btn_img_wrap">
-            <Sql></Sql>
+            <Taganalyzer></Taganalyzer>
           </div>
-          <p class="home_btn_text">SQL</p>
+          <p class="home_btn_text">Tag Analyzer</p>
         </button>
-        <button class="btn_box">
+        <router-link to="/shell">
+          <button class="btn_box">
+            <div class="btn_img_wrap">
+              <Shell></Shell>
+            </div>
+            <p class="home_btn_text">Shell</p>
+          </button>
+        </router-link>
+        <router-link to="/worksheet">
+          <button class="btn_box">
+            <div class="btn_img_wrap">
+              <Worksheet></Worksheet>
+            </div>
+            <p class="home_btn_text">Worksheet</p>
+          </button>
+        </router-link>
+        <button class="btn_box btn_drop">
           <div class="btn_img_wrap">
-            <Sql></Sql>
+            <Dropopen></Dropopen>
           </div>
-          <p class="home_btn_text">SQL</p>
-        </button>
-        <button class="btn_box">
-          <div class="btn_img_wrap">
-            <Sql></Sql>
-          </div>
-          <p class="home_btn_text">SQL</p>
+          <p class="home_btn_text">Drop & Open</p>
         </button>
       </div>
       <!-- 아래 바로가기 부분 -->
@@ -75,7 +85,15 @@
 <script setup>
 import TabHome from "@/components/TabHomeView.vue";
 import Sql from "@/components/svg/Sql.vue";
+import Tql from "@/components/svg/Tql.vue";
+import Taganalyzer from "@/components/svg/Taganalyzer.vue";
+import Shell from "@/components/svg/Shell.vue";
+import Worksheet from "@/components/svg/Worksheet.vue";
+import Dropopen from "@/components/svg/Dropopen.vue";
 import Gear from "@/components/svg/Gear.vue";
+import Setting from "../components/SettingView.vue";
+import Tab from "../components/TabView.vue";
+import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
@@ -107,175 +125,7 @@ button {
 .outer {
   background-color: #1b1c21;
   height: 100%;
-
-  .tab {
-    background-color: #404557;
-    height: 54px;
-    display: flex;
-    position: relative;
-
-    .tab_button {
-      margin-top: 4px;
-      width: 260px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      background-color: #404457;
-      cursor: pointer;
-      &:hover {
-        svg {
-          fill: #4199ff;
-          stroke: #4199ff;
-        }
-      }
-      svg {
-        padding-left: 16px;
-        fill: rgba(255, 255, 255, 1);
-        stroke: rgba(255, 255, 255, 1);
-        path {
-          fill: rgba(255, 255, 255, 1);
-          stroke: #fff;
-        }
-      }
-      span {
-        padding-left: 8px;
-        color: #fff;
-      }
-      .tab_close {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-48%);
-      }
-    }
-    .setting_btn {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      right: 8px;
-      top: 11px;
-    }
-    .tab_logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      img {
-        padding: 0;
-      }
-      &::after {
-        content: "";
-        background-color: rgba(255, 255, 255, 0.5);
-        width: 1px;
-        height: 24px;
-        position: absolute;
-        right: -1px;
-        z-index: 20;
-      }
-    }
-    .tab_select {
-      color: #4199ff;
-      background-color: #262831;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      position: relative;
-      z-index: 21;
-      svg {
-        fill: #4199ff;
-        stroke: #4199ff;
-      }
-
-      span {
-        color: #4199ff;
-      }
-      .round_right_wrap {
-        width: 15px;
-        height: 15px;
-        background-color: #262831;
-        position: absolute;
-        bottom: 0;
-        left: -15px;
-        transform: scaleX(-1), scaleY(-1);
-
-        .round_right {
-          width: 15px;
-          height: 15px;
-          border-radius: 0 0 80% 0;
-          background-color: #404557;
-          position: absolute;
-          bottom: 0;
-          left: 0px;
-        }
-      }
-
-      .round_left_wrap {
-        width: 15px;
-        height: 15px;
-        background-color: #262831;
-        position: absolute;
-        bottom: 0;
-        right: -15px;
-        transform: scaleX(-1), scaleY(-1);
-        z-index: 1;
-
-        .round_left {
-          width: 15px;
-          height: 15px;
-          border-radius: 0 0 0 80%;
-          background-color: #404457;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          z-index: 1;
-        }
-      }
-    }
-    .tab_none_select {
-      .tab_close {
-        .path {
-          fill: #fff;
-          stroke: #fff;
-          stroke-width: 2px;
-        }
-      }
-      &:hover {
-        .path {
-          stroke: #4199ff;
-        }
-        span {
-          color: #4199ff;
-        }
-        .tab_icon {
-          fill: #4199ff;
-        }
-      }
-      .tab_icon {
-        fill: #fff;
-      }
-      &::after {
-        content: "";
-        background-color: rgba(255, 255, 255, 0.5);
-        width: 1px;
-        height: 24px;
-        position: absolute;
-        right: -1px;
-        z-index: 20;
-      }
-    }
-    .plus_wrap {
-      width: 50px;
-      margin-top: 4px;
-      &:hover {
-        svg {
-          fill: #4199ff;
-        }
-      }
-      svg {
-        fill: #fff;
-      }
-    }
-  }
+  overflow: scroll;
   .inner {
     padding: 0 18.75%;
     .title {
@@ -296,14 +146,18 @@ button {
     }
     .btn_wrap {
       display: flex;
-      justify-content: space-between;
-      margin-top: 48px;
+      flex-wrap: wrap;
+      margin-top: 28px;
       border-bottom: 1px solid #404457;
       padding-bottom: 48px;
+      .btn_drop {
+        opacity: 0.4;
+      }
       .btn_box {
         width: 224px;
         height: 224px;
         margin-right: 20px;
+        margin-top: 20px;
         background-color: rgba(0, 0, 0, 0.18);
         border-radius: 10px;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
@@ -349,6 +203,7 @@ button {
     .sub_tab_wrap {
       ul {
         margin-top: 48px;
+        height: 300px;
         .sub_tab {
           button {
             display: flex;
@@ -358,6 +213,11 @@ button {
             cursor: pointer;
             span {
               margin-right: 8px;
+            }
+            &:hover {
+              span {
+                color: #4199ff;
+              }
             }
           }
         }
@@ -377,14 +237,3 @@ button {
   }
 }
 </style>
-<script>
-import Setting from "../components/SettingView.vue";
-import Tab from "../components/TabView.vue";
-
-export default {
-  components: {
-    Tab,
-    Setting,
-  },
-};
-</script>

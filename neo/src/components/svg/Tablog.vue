@@ -4,6 +4,7 @@
     width="24"
     height="24"
     viewBox="0 0 24 24"
+    style="stroke: transparent"
   >
     <path data-name="사각형 1022" style="fill: none" d="M0 0h24v24H0z" />
     <path

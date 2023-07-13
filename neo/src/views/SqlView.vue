@@ -10,21 +10,154 @@
             <Play></Play>
           </button>
           <button class="modal_btn">
-            <Date></Date>
-            <span> YYYY-MM-DD HH:MI:SS </span>
+            <div>
+              <Date></Date>
+              <span> YYYY-MM-DD HH:MI:SS </span>
+            </div>
             <span><Dropdown></Dropdown></span>
           </button>
           <button class="modal_btn">
-            <Local></Local>
-            <span>LOCAL</span>
+            <div>
+              <Local></Local>
+              <span>LOCAL</span>
+            </div>
             <span><Dropdown></Dropdown></span>
           </button>
-          <button class="sql_save_btn">
+          <button @click="openSaveModal" class="sql_save_btn">
             <Save></Save>
           </button>
-          <button class="sql_file_btn">
+          <div class="backdrop" v-if="isSaveModalOpen"></div>
+          <div class="save_modal" v-if="isSaveModalOpen">
+            <div class="save_modal_wrap">
+              <div class="save_modal_tilte">
+                <div>
+                  <Folder></Folder>
+                  <span>Open</span>
+                </div>
+                <button @click="closeSaveModal"><TabClose></TabClose></button>
+              </div>
+              <div class="save_modal_top">
+                <div>
+                  <button class="save_modal_top_btn">
+                    <TagPrevious></TagPrevious>
+                  </button>
+                  <button class="save_modal_top_btn">
+                    <TagNext></TagNext>
+                  </button>
+                </div>
+                <button class="save_modal_top_adress_btn">
+                  <SaveHome></SaveHome>
+                  <SavePlay></SavePlay>
+                </button>
+                <button><SaveNew></SaveNew></button>
+              </div>
+              <div class="save_modal_contents">
+                <div class="save_modal_contents_title">
+                  <div class="save_modal_name">Name</div>
+                  <div class="save_modal_date">Last modified</div>
+                  <div class="save_modal_size">Size</div>
+                </div>
+                <div class="save_modal_content_wrap">
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveFile></SaveFile>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="save_modal_footer">
+                <button @click="closeSaveModal" class="save_modal_btn">
+                  OK
+                </button>
+                <button @click="closeSaveModal" class="save_modal_btn last">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+          <button @click="openOpenModal" class="sql_file_btn">
             <Folder></Folder>
           </button>
+          <div class="backdrop" v-if="isOpenModalOpen"></div>
+          <div class="open_modal" v-if="isOpenModalOpen">
+            <div class="open_modal_wrap"></div>
+          </div>
         </div>
         <div class="sql_left_table"></div>
       </div>
@@ -124,6 +257,8 @@
 <script setup>
 import Play from "@/components/svg/Play.vue";
 import Date from "@/components/svg/Date.vue";
+import TagNext from "@/components/svg/TagNext.vue";
+import TagPrevious from "@/components/svg/TagPrevious.vue";
 import Dropdown from "@/components/svg/Dropdown.vue";
 import Save from "@/components/svg/Save.vue";
 import Local from "@/components/svg/Local.vue";
@@ -137,28 +272,33 @@ import Vertical from "@/components/svg/Vertical.vue";
 import Horizontal from "@/components/svg/Horizontal.vue";
 import TabClose from "@/components/svg/TabClose.vue";
 import DateModal from "@/components/DateModal.vue";
+import Setting from "../components/SettingView.vue";
+import Tab from "../components/TabView.vue";
+import SavePlay from "@/components/svg/SavePlay.vue";
+import SaveFile from "@/components/svg/SaveFile.vue";
+import SaveSql from "@/components/svg/SaveSql.vue";
+import SaveHome from "@/components/svg/SaveHome.vue";
+import SaveNew from "@/components/svg/SaveNew.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
 button {
   svg {
+    stroke: rgba(255, 255, 255, 0.5);
     fill: rgba(255, 255, 255, 0.5);
+
     path {
       fill: rgba(255, 255, 255, 0.5);
     }
   }
-  .dropdown {
-    stroke: rgba(255, 255, 255, 0.5);
-  }
+
   &:hover {
-    .dropdown {
-      stroke: rgba(255, 255, 255, 1);
-    }
     span {
       color: rgba(255, 255, 255, 1);
     }
     svg {
       fill: rgba(255, 255, 255, 1);
+      stroke: rgba(255, 255, 255, 1);
       path {
         fill: rgba(255, 255, 255, 1);
       }
@@ -195,9 +335,9 @@ button {
       position: relative;
 
       .modal_btn {
-        position: relative;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         border-radius: 10px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
         border: solid 0.5px rgba(255, 255, 255, 0.5);
@@ -205,6 +345,10 @@ button {
         width: 256px;
         height: 32px;
         margin-left: 20px;
+        div {
+          display: flex;
+          align-items: center;
+        }
         svg {
           margin: 0 10px;
         }
@@ -229,6 +373,143 @@ button {
         position: absolute;
         right: 40px;
       }
+      .save_modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 780px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+        .save_modal_wrap {
+          .save_modal_tilte {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 30px 28px 26px;
+            svg {
+              fill: rgba(255, 255, 255, 1);
+              stroke: rgba(255, 255, 255, 1);
+            }
+            span {
+              color: rgba(255, 255, 255, 1);
+            }
+            div {
+              display: flex;
+              align-items: center;
+            }
+          }
+          .save_modal_top {
+            padding: 0 30px 12px 28px;
+            display: flex;
+            align-items: center;
+            div {
+              .save_modal_top_btn {
+                margin-right: 8px;
+              }
+            }
+            .save_modal_top_adress_btn {
+              margin: 0 8px;
+              width: 566px;
+              height: 34px;
+              border-radius: 8px;
+              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+              border: solid 0.5px rgba(255, 255, 255, 0.5);
+              background-color: rgba(38, 40, 49, 0.5);
+              display: flex;
+              align-items: center;
+              padding-left: 10px;
+            }
+          }
+          .save_modal_contents {
+            height: 300px;
+            width: calc(100% - 1px);
+            border: solid 0.5px #9c9da6;
+            background-color: rgba(38, 40, 49, 0.5);
+            .save_modal_contents_title {
+              display: flex;
+              font-family: Pretendard;
+              font-size: 12px;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.5);
+              border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+              padding: 4px 0;
+              .save_modal_name {
+                width: 47%;
+                margin-left: 24px;
+              }
+              .save_modal_date {
+                width: 31%;
+              }
+            }
+            .save_modal_content {
+              button {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-family: Pretendard;
+                font-size: 16px;
+                font-weight: 500;
+                color: #fff;
+                .save_modal_name {
+                  width: 47%;
+                  margin-left: 24px;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                }
+                .save_modal_date {
+                  width: 31%;
+                  display: flex;
+                  justify-content: flex-start;
+                }
+                &:hover {
+                  margin: 0 auto;
+                  background-color: #4199ff;
+                  border-radius: 8px;
+                  width: 98%;
+                  .save_modal_name {
+                    margin-left: 16px;
+                  }
+                  .save_modal_date {
+                    margin-left: 8px;
+                  }
+                  .save_modal_size {
+                    margin-left: 4px;
+                  }
+                }
+              }
+            }
+          }
+          .save_modal_footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 34px 0 40px 0;
+            .save_modal_btn {
+              width: 120px;
+              height: 40px;
+              border-radius: 8px;
+              box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+              border: solid 0.5px #d9d9d9;
+              background-color: rgba(255, 255, 255, 0.2);
+              color: rgba(255, 255, 255, 1);
+              margin-right: 8px;
+              &:hover {
+                background-color: #4199ff;
+              }
+            }
+            .last {
+              margin-right: 0;
+            }
+          }
+        }
+      }
       .sql_file_btn {
         position: absolute;
         right: 0;
@@ -248,7 +529,6 @@ button {
       display: flex;
       align-items: center;
       position: relative;
-
       button {
         svg {
           fill: rgba(255, 255, 255, 0.5);
@@ -277,7 +557,6 @@ button {
         display: flex;
         justify-content: left;
         align-items: center;
-
         &:hover {
           svg {
             fill: #fdb532;
@@ -390,13 +669,26 @@ button {
 }
 </style>
 <script>
-import Setting from "../components/SettingView.vue";
-import Tab from "../components/TabView.vue";
-
 export default {
-  components: {
-    Tab,
-    Setting,
+  data() {
+    return {
+      isSaveModalOpen: false,
+      isOpenModalOpen: false,
+    };
+  },
+  methods: {
+    openSaveModal() {
+      this.isSaveModalOpen = true;
+    },
+    closeSaveModal() {
+      this.isSaveModalOpen = false;
+    },
+    openOpenModal() {
+      this.isOpenModalOpen = true;
+    },
+    closeOpenModal() {
+      this.isOpenModalOpen = false;
+    },
   },
 };
 </script>

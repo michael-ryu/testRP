@@ -8,10 +8,14 @@
   >
     <path data-name="사각형 1020" style="fill: none" d="M0 0h40v40H0z" />
     <path
-      data-name="다각형 1"
-      d="m7.286 0 7.286 12H0z"
-      transform="rotate(90 6.893 19.607)"
-      style="stroke: transparent"
+      data-name="다각형 4"
+      d="m6.679 0 6.679 11H0z"
+      transform="rotate(90 9.645 22.855)"
+    />
+    <path
+      data-name="다각형 5"
+      d="m6.679 0 6.679 11H0z"
+      transform="rotate(90 3.145 16.355)"
     />
   </svg>
 </template>

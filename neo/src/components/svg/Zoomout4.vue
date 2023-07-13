@@ -4,6 +4,7 @@
     width="24"
     height="24"
     viewBox="0 0 24 24"
+    style="stroke: transparent"
   >
     <g data-name="btn_zoom out x4">
       <path data-name="사각형 5" style="fill: none" d="M0 0h24v24H0z" />

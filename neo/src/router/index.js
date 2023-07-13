@@ -25,6 +25,16 @@ const router = createRouter({
       component: () => import("../views/SqlView.vue"),
     },
     {
+      path: "/shell",
+      name: "shell",
+      component: () => import("../views/ShellView.vue"),
+    },
+    {
+      path: "/worksheet",
+      name: "worksheet",
+      component: () => import("../views/WorksheetView.vue"),
+    },
+    {
       path: "/sqlmodal",
       name: "modal",
       component: () => import("../components/SqlmodalView.vue"),

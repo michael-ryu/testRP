@@ -8,12 +8,11 @@
     </router-link>
     <!-- 홈모양 svg -->
     <router-link to="/home">
-      <button class="tab_button tab_select">
+      <button class="tab_button tab_none_select">
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
         <TabHome></TabHome>
-
         <span>Welcome</span>
         <!-- 닫기 svg -->
         <span class="tab_close"><TabClose></TabClose></span>
@@ -22,19 +21,19 @@
         </div>
       </button>
     </router-link>
-    <router-link to="/sql">
-      <button class="tab_button tab_none_select">
+    <router-link to="/shell">
+      <button class="tab_button tab_select">
         <!-- sql svg -->
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
         <TabSql></TabSql>
-        <span>SQL</span>
+        <span>Shell</span>
         <!-- 닫기 svg -->
         <span class="tab_close"><TabClose></TabClose></span>
       </button>
     </router-link>
-    <router-link to="/tag">
+    <router-link to="/work">
       <button class="tab_button tab_none_select">
         <!-- tag anlyzer svg -->
         <div class="round_right_wrap">
@@ -42,7 +41,7 @@
         </div>
         <TabTaganalyzer></TabTaganalyzer>
 
-        <span>Tag Anlyzer</span>
+        <span>Worksheet</span>
         <!-- 닫기 svg -->
         <span class="tab_close"><TabClose></TabClose></span>
         <div class="round_left_wrap">

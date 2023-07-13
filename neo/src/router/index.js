@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import("../views/HomeView.vue"),
     },
     {
+      path: "/homew",
+      name: "homew",
+      component: () => import("../views/HomeWhiteView.vue"),
+    },
+    {
       path: "/setting",
       name: "setting",
       component: () => import("../components/SettingView.vue"),

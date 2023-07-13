@@ -1,7 +1,7 @@
 <template>
   <div class="outer">
     <!-- tab 부분 -->
-    <TabHome></TabHome>
+    <TabHomew></TabHomew>
     <div class="inner">
       <div class="title">
         <p class="main_title">Welcome</p>
@@ -43,14 +43,12 @@
             <p class="home_btn_text">Worksheet</p>
           </button>
         </router-link>
-        <router-link to="/homew">
-          <button class="btn_box btn_drop">
-            <div class="btn_img_wrap">
-              <Dropopen></Dropopen>
-            </div>
-            <p class="home_btn_text">Drop & Open</p>
-          </button>
-        </router-link>
+        <button class="btn_box btn_drop">
+          <div class="btn_img_wrap">
+            <Dropopen></Dropopen>
+          </div>
+          <p class="home_btn_text">Drop & Open</p>
+        </button>
       </div>
       <!-- 아래 바로가기 부분 -->
       <div class="sub_tab_wrap">
@@ -85,7 +83,7 @@
   </div>
 </template>
 <script setup>
-import TabHome from "@/components/TabHomeView.vue";
+import TabHomew from "@/components/TabHomewView.vue";
 import Sql from "@/components/svg/Sql.vue";
 import Tql from "@/components/svg/Tql.vue";
 import Taganalyzer from "@/components/svg/Taganalyzer.vue";
@@ -125,7 +123,7 @@ button {
   }
 }
 .outer {
-  background-color: #1b1c21;
+  background-color: #f7f7f8;
   height: 100%;
   overflow: scroll;
   .inner {
@@ -134,7 +132,7 @@ button {
       margin-top: 18vh;
       .main_title {
         font-size: 40px;
-        color: #fff;
+        color: #262831;
         font-family: Pretendard;
         font-weight: bold;
       }
@@ -143,14 +141,13 @@ button {
         opacity: 0.8;
         font-family: Pretendard;
         font-size: 24px;
-        color: rgba(255, 255, 255, 0.5);
+        color: #262831;
       }
     }
     .btn_wrap {
       display: flex;
       flex-wrap: wrap;
       margin-top: 28px;
-      border-bottom: 1px solid #404457;
       padding-bottom: 48px;
       .btn_drop {
         opacity: 0.4;
@@ -160,10 +157,9 @@ button {
         height: 224px;
         margin-right: 20px;
         margin-top: 20px;
-        background-color: rgba(0, 0, 0, 0.18);
-        border-radius: 10px;
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        border: solid 0.5px rgba(0, 0, 0, 0.5);
+        background-color: rgba(38, 40, 49, 0.06);
         .btn_img_wrap {
           position: relative;
           &::after {
@@ -174,14 +170,14 @@ button {
             transform: translateX(-50%);
             width: 16px;
             height: 1px;
-            background-color: #fff;
+            background-color: rgba(38, 40, 49, 0.5);
           }
         }
         p {
           font-family: Pretendard;
           font-size: 20px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(38, 40, 49, 0.5);
           padding-top: 25px;
         }
         &:hover {
@@ -193,7 +189,7 @@ button {
             opacity: 1;
           }
           p {
-            color: rgba(255, 255, 255, 1);
+            color: #262831;
           }
         }
       }

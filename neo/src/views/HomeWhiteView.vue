@@ -125,7 +125,6 @@ button {
 .outer {
   background-color: #f7f7f8;
   height: 100%;
-  overflow: scroll;
   .inner {
     padding: 0 18.75%;
     .title {
@@ -184,12 +183,20 @@ button {
           box-shadow: inset 0 -2px 62px 0 rgba(65, 153, 255, 0.5);
           border: solid 1px #4199ff;
           cursor: pointer;
+
           svg {
             mix-blend-mode: normal;
             opacity: 1;
           }
           p {
             color: #262831;
+          }
+        }
+        .btn_drop {
+          &:hover {
+            p {
+              color: rgba(38, 40, 49, 0.5);
+            }
           }
         }
       }

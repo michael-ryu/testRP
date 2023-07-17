@@ -127,9 +127,8 @@ button {
 .outer {
   background-color: #1b1c21;
   height: 100%;
-  overflow: scroll;
   .inner {
-    padding: 0 18.75%;
+    padding: 0 11.5%;
     .title {
       margin-top: 18vh;
       .main_title {

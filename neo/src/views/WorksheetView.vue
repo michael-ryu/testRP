@@ -2,8 +2,8 @@
   <div class="outer">
     <!-- tab 부분 -->
     <TagWorksheet />
-    <div class="tag_tab">
-      <button class="refresh_btn">
+    <div class="worksheet_tab">
+      <button class="doubleplay_btn">
         <DoublePlay></DoublePlay>
       </button>
       <button class="tag_save_btn">
@@ -12,6 +12,81 @@
       <button>
         <Folder></Folder>
       </button>
+    </div>
+    <div class="worksheet_contents_wrap">
+      <div class="worksheet_contents">
+        <div class="worksheet_box_open">
+          <div class="on_btn">
+            <WorksheetOn></WorksheetOn>
+          </div>
+          <p class="worksheet_text">
+            <span class="red">SELECT time rollup 1</span> sec mtime,<br />
+            <span class="green">avg</span>(<span class="red">value</span>)
+            <span class="red">FROM</span> TAG<br />
+            <span class="red">WHERE</span> name =
+            <span class="green">“TAG_0001’</span>
+            <span class="red">group by</span> mtime
+            <span class="red">order by</span> mtime;
+          </p>
+          <div class="worksheet_btn_wrap">
+            <button class="right_border worksheet_markdown">
+              <span>Markdown</span><Dropdown></Dropdown>
+            </button>
+            <button class="right_border"><Play></Play></button>
+            <button><DoubleUp></DoubleUp></button>
+            <button class="right_border"><DoubleDown></DoubleDown></button>
+            <button><UpWard></UpWard></button>
+            <button class="right_border"><DownWard></DownWard></button>
+            <button><Bin></Bin></button>
+            <button class="up_btn"><TabUp></TabUp></button>
+          </div>
+        </div>
+      </div>
+      <div class="worksheet_contents">
+        <div class="worksheet_box_open">
+          <div class="on_btn">
+            <WorksheetOn></WorksheetOn>
+          </div>
+          <p class="worksheet_text">
+            <span class="red">SELECT time rollup 1</span> sec mtime,<br />
+            <span class="green">avg</span>(<span class="red">value</span>)
+            <span class="red">FROM</span> TAG<br />
+            <span class="red">WHERE</span> name =
+            <span class="green">“TAG_0001’</span>
+            <span class="red">group by</span> mtime
+            <span class="red">order by</span> mtime;
+          </p>
+          <div class="worksheet_btn_wrap">
+            <button class="right_border worksheet_markdown">
+              <span>Markdown</span><Dropdown></Dropdown>
+            </button>
+            <button class="right_border"><Play></Play></button>
+            <button><DoubleUp></DoubleUp></button>
+            <button class="right_border"><DoubleDown></DoubleDown></button>
+            <button><UpWard></UpWard></button>
+            <button class="right_border"><DownWard></DownWard></button>
+            <button><Bin></Bin></button>
+            <button class="up_btn"><TabUp></TabUp></button>
+          </div>
+        </div>
+      </div>
+      <div class="lorem_wrap">
+        <p class="lorem_title green">Lorem ipsum</p>
+        <p class="lorem_text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br />
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <div class="worksheet_fold_wrap">
+        <div class="on_btn">
+          <WorksheetOn></WorksheetOn>
+        </div>
+        <button class="worksheet_box_fold">
+          <button class="fold_dropdown">
+            <Dropdown></Dropdown>
+          </button>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +100,14 @@ import Bin from "@/components/svg/Bin.vue";
 import Up from "@/components/svg/Up.vue";
 import Down from "@/components/svg/Down.vue";
 import DoublePlay from "@/components/svg/DoublePlay.vue";
+import Play from "@/components/svg/Play.vue";
+import WorksheetOn from "@/components/svg/WorksheetOn.vue";
+import DoubleUp from "@/components/svg/DoubleUp.vue";
+import DoubleDown from "@/components/svg/DoubleDown.vue";
+import UpWard from "@/components/svg/UpWard.vue";
+import DownWard from "@/components/svg/DownWard.vue";
+import TabUp from "@/components/svg/TabUp.vue";
+import TabDropdown from "@/components/svg/TabDropdown.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
@@ -55,75 +138,13 @@ button {
 .outer {
   background-color: #1b1c21;
   height: 100%;
-  .tag_tab {
+  overflow: scroll;
+  .worksheet_tab {
     height: 54px;
     display: flex;
     align-items: center;
     background-color: #262831;
-    .backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(38, 40, 49, 0.5);
-      z-index: 998;
-    }
-    .modal_btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-      border: solid 0.5px rgba(255, 255, 255, 0.5);
-      background-color: #262831;
-      width: 360px;
-      height: 32px;
-      margin-left: 20px;
-      padding: 0 10px;
-      div {
-        display: flex;
-        align-items: center;
-      }
-      svg {
-        margin-right: 8px;
-        path {
-          fill: rgba(255, 255, 255, 0.5);
-        }
-        .modal_arrow_icon {
-          stroke: rgba(255, 255, 255, 0.5);
-        }
-      }
-      span {
-        font-family: Pretendard;
-        font-size: 16px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
-      }
-      .modal_arrow {
-        position: absolute;
-        right: 0px;
-      }
-      .modal_arrow_icon {
-        stroke: rgba(255, 255, 255, 0.5);
-      }
-      &:hover {
-        border: solid 0.5px rgba(255, 255, 255, 1);
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 1);
-          }
-          .modal_arrow_icon {
-            stroke: rgba(255, 255, 255, 1);
-          }
-        }
-        span {
-          color: rgba(255, 255, 255, 1);
-        }
-      }
-    }
-    .refresh_btn {
+    .doubleplay_btn {
       margin: 0 16px;
       position: relative;
       &::after {
@@ -138,406 +159,166 @@ button {
       }
     }
     .tag_save_btn {
-      margin-left: 12px;
-      margin-right: 4px;
+      margin-left: 8px;
     }
   }
-  .tag_table_wrap {
-    width: calc(100% - 80px);
-    background-color: #262831;
-    margin: 0 auto;
-    margin-top: 40px;
-    border-radius: 10px;
-    .tag_table_subtab {
-      padding-top: 32px;
-      margin: 0 30px;
+  .worksheet_contents_wrap {
+    margin-top: 80px;
+    height: 1000px;
+    .worksheet_contents {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
+      flex-direction: column;
+      .worksheet_box_open {
+        width: 80%;
+        height: 240px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        background-color: rgba(38, 40, 49, 0.5);
+        position: relative;
+        p {
+          font-family: D2Coding;
+          font-size: 18px;
+          color: rgba(255, 255, 255, 1);
+          text-align: left;
+          margin: 24px;
+          .red {
+            color: #ff4460;
+          }
+          .green {
+            color: #55fdd7;
           }
         }
         &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
-      .tag_chart_index {
-        display: flex;
-        align-items: center;
-        color: #fdb532;
-      }
-      .tag_chart_date {
-        font-family: Pretendard;
-        font-size: 18px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
-      }
-    }
-    .tag_table {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      // height: 300px;
-      margin: 16px 16px 0 16px;
-      button {
-        svg {
-          fill: none;
-          stroke: #707070;
-          stroke-width: 0.5px;
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            stroke: rgba(255, 255, 255, 1);
-
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
-      .tag_chart_img_wrap {
-        margin-right: 24px;
-        .tag_chart_img {
-          width: 100%;
-        }
-      }
-    }
-    .tag_zoom_wrap {
-      width: 232px;
-      height: 48px;
-      margin: 0 auto;
-      border-radius: 8px;
-      border: solid 0.5px #707070;
-      display: flex;
-      padding: 0 16px;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
-    }
-    .tag_bar_wrap {
-      border-top: 1px solid #101010;
-      padding: 30px 6.5%;
-      .tag_chart_bar {
-        width: 100%;
-      }
-    }
-  }
-  .tag_plus_wrap {
-    height: 80px;
-    width: calc(100% - 80px);
-    margin: 0 auto;
-    border-radius: 10px;
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
-    background-color: #262831;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    div {
-      margin-top: 10px;
-    }
-    &:hover {
-      border: solid 0.5px rgba(255, 255, 255, 1);
-      opacity: 0.8;
-    }
-  }
-  .tag_modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 780px;
-    background-color: #404457;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
-      inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    z-index: 999;
-    .tag_modal_title {
-      color: rgba(255, 255, 255, 1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 25px 26px 0 26px;
-      div {
-        display: flex;
-        align-items: center;
-
-        span {
-          margin-left: 8px;
-        }
-      }
-      svg {
-        fill: rgba(255, 255, 255, 1);
-        stroke: rgba(255, 255, 255, 1);
-      }
-    }
-
-    .tag_modal_contents_wrap {
-      margin-top: 70px;
-
-      .tag_modal_contents {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 46px;
-        margin-right: 80px;
-        svg {
-          fill: rgba(255, 255, 255, 0.5);
-          path {
-            stroke: rgba(255, 255, 255, 0.5);
-          }
-        }
-        span {
-          font-family: Pretendard;
-          font-size: 16px;
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
-        }
-
-        .tag_modal_table_btn {
-          width: 528px;
-          height: 34px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 8px;
-          color: rgba(255, 255, 255, 0.5);
-          border-radius: 8px;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
-
-          &:hover {
-            color: rgba(255, 255, 255, 1);
-          }
-        }
-      }
-      p {
-        font-family: Pretendard;
-        font-size: 12px;
-        font-weight: 500;
-        color: #fdb532;
-        padding-left: 126px;
-        margin-top: 4px;
-      }
-      .tag_modal_tag_btn_wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 13px;
-        margin-bottom: 32px;
-        .tag_modal_tag_size_btn {
-          width: 408px;
-          height: 34px;
-          border-radius: 8px;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
-          color: rgba(255, 255, 255, 0.5);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 10px;
-          margin-right: 8px;
-          &:hover {
-            border: solid 0.5px rgba(255, 255, 255, 1);
-            color: rgba(255, 255, 255, 1);
-            svg {
-              stroke: rgba(255, 255, 255, 1);
-            }
-          }
-          svg {
-            stroke: rgba(255, 255, 255, 0.5);
-          }
-        }
-        .tag_modal_tag_serch_btn {
-          width: 112px;
-          height: 34px;
-          border-radius: 8px;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
           border: solid 0.5px #4199ff;
-          background-color: rgba(38, 40, 49, 0.5);
-          color: #4199ff;
+          .on_btn {
+            svg {
+              fill: #4199ff;
+            }
+          }
         }
-      }
-      .tag_modal_chart_wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        .on_btn {
+          position: absolute;
+          top: 12px;
+          left: -32px;
+          svg {
+            fill: rgba(255, 255, 255, 0.5);
+          }
+        }
+        .worksheet_btn_wrap {
+          position: absolute;
+          top: 8px;
+          right: 12px;
+          display: flex;
+          align-items: center;
 
-        .tag_modal_chart_btn {
-          width: 170px;
-          height: 100px;
-          margin-right: 9px;
-          border-radius: 8px;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
-          &:hover {
-            box-shadow: inset 0 -2px 62px 0 rgba(65, 153, 255, 0.5);
-            border: solid 0.5px #4199ff;
+          .right_border {
+            position: relative;
+            margin-right: 8px;
+            &::after {
+              content: "";
+              background-color: rgba(255, 255, 255, 0.5);
+              width: 1px;
+              height: 24px;
+              position: absolute;
+              right: -4px;
+              top: 8px;
+              z-index: 20;
+            }
           }
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .last {
-          margin-right: 0;
-        }
-      }
-      .tag_modal_data_wrap {
-        display: flex;
-        justify-content: center;
-        margin-top: 32px;
-        margin-left: 80px;
-        .tag_modal_data {
-          width: 258px;
-          height: 300px;
-          border-radius: 8px;
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
-          margin-right: 8px;
-          font-family: Pretendard;
-          font-size: 16px;
-          font-weight: 500;
-          color: #fff;
-          padding: 12px 0px;
-          div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 16px;
-          }
-          .tag_modal_data_btn {
-            width: 96px;
-            height: 32px;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-            border: solid 0.5px rgba(255, 255, 255, 0.5);
-            background-color: #404457;
-            border-radius: 8px;
-            font-family: Pretendard;
-            font-size: 14px;
-            font-weight: 500;
+          .worksheet_markdown {
             color: rgba(255, 255, 255, 0.5);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 8px;
-            &:hover {
-              color: #fff;
+            padding-right: 4px;
+            span {
+              margin-right: 4px;
+            }
+            &::after {
+              content: "";
+              background-color: rgba(255, 255, 255, 0.5);
+              width: 1px;
+              height: 24px;
+              position: absolute;
+              right: -4px;
+              top: -6px;
+              z-index: 20;
             }
           }
-          p {
-            padding: 0;
-            margin-top: 5px;
-            font-family: Pretendard;
-            font-size: 16px;
-            font-weight: 500;
-            color: #fff;
-            cursor: pointer;
-            padding: 0 16px;
+          .up_btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
-      }
-      .tag_modal_tag_add_tag_wrap {
-        width: 258px;
-        margin-left: 80px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 4px;
-        .tag_modal_data_add_btn_wrap {
-          display: flex;
-          align-items: center;
-          margin-top: 4px;
-          span {
-            margin: 0 8px;
-            font-family: Pretendard;
-            font-size: 14px;
-            font-weight: 500;
-          }
-        }
-      }
-      .tag_modal_tag_add_tag_select_wrap {
-        width: 258px;
-        margin-top: 4px;
-        display: flex;
-        justify-content: flex-end;
       }
     }
-    .tag_modal_footer {
-      display: flex;
-      justify-content: center;
-      margin-top: 52px;
-      margin-bottom: 40px;
-      .tag_modal_footer_btn {
-        width: 120px;
-        height: 40px;
-        border-radius: 8px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        border: solid 0.5px #d9d9d9;
-        background-color: rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 1);
-        margin-right: 8px;
-        &:hover {
-          background-color: #4199ff;
+    .lorem_wrap {
+      width: 80%;
+      margin: 0 auto;
+      padding-left: 26px;
+      .lorem_title {
+        color: #55fdd7;
+        font-family: Pretendard;
+        font-size: 32px;
+        margin-bottom: 18px;
+      }
+      .lorem_text {
+        font-family: Pretendard;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 40px;
+      }
+    }
+    .worksheet_fold_wrap {
+      width: 80%;
+      height: 56px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+      border: solid 0.5px rgba(255, 255, 255, 0.5);
+      background-color: rgba(38, 40, 49, 0.5);
+      position: relative;
+      margin: 0 auto;
+      .worksheet_box_fold {
+        margin-right: 12px;
+        .fold_dropdown {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          border: solid 0.5px rgba(255, 255, 255, 0.5);
+          background-color: rgba(38, 40, 49, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 12px;
+          top: 12px;
         }
       }
-      .last {
-        margin-right: 0;
+      .on_btn {
+        position: absolute;
+        top: 12px;
+        left: -32px;
+        svg {
+          fill: rgba(255, 255, 255, 0.5);
+        }
+      }
+      &:hover {
+        border: solid 0.5px #4199ff;
+        .on_btn {
+          svg {
+            fill: #4199ff;
+          }
+        }
       }
     }
   }
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      isModalOpen: false,
-      isTagModalOpen: false,
-    };
-  },
-  methods: {
-    openModal() {
-      this.isModalOpen = true;
-    },
-    closeModal() {
-      this.isModalOpen = false;
-    },
-
-    openTagModal() {
-      this.isTagModalOpen = true;
-    },
-    closeTagModal() {
-      this.isTagModalOpen = false;
-    },
-  },
-};
-</script>

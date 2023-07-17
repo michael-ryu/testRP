@@ -164,8 +164,8 @@
       <!-- 우측 tab -->
       <div class="sql_right">
         <div class="sql_tab_right">
-          <router-link to="/shell">
-            <button class="sql_right_tab_btn sql_tab_select">
+          <router-link to="/sql">
+            <button class="sql_tab_none_select sql_right_tab_btn">
               <div class="sql_round_right_wrap">
                 <div class="round_right"></div>
               </div>
@@ -177,7 +177,7 @@
             </button>
           </router-link>
           <router-link to="/sqlchart">
-            <button class="sql_tab_none_select sql_right_tab_btn">
+            <button class="sql_tab_select sql_right_tab_btn">
               <div class="sql_round_right_wrap">
                 <div class="round_right"></div>
               </div>
@@ -208,53 +208,20 @@
           </button>
         </div>
         <div class="sql_right_table">
-          <table class="sql_table">
-            <tr>
-              <th>ROWNUM</th>
-              <th>mtime (LOCAL)</th>
-              <th>avg(value)</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>2</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>4</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>6</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>8</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-          </table>
+          <div class="sql_right_table_tab">
+            <button><Play></Play></button>
+            <div class="sql_right_table_tab_btn_wrap">
+              <div>
+                <span>Slider</span><button>20%<Dropdown></Dropdown></button>
+              </div>
+              <div>
+                <span>X Axis</span><button>--<Dropdown></Dropdown></button>
+              </div>
+              <div>
+                <span>Y Axis</span><button>--<Dropdown></Dropdown></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -278,8 +245,8 @@ import Vertical from "@/components/svg/Vertical.vue";
 import Horizontal from "@/components/svg/Horizontal.vue";
 import TabClose from "@/components/svg/TabClose.vue";
 import DateModal from "@/components/DateModal.vue";
-import Setting from "../components/SettingView.vue";
-import Tab from "../components/TabView.vue";
+import Setting from "./SettingView.vue";
+import Tab from "./TabView.vue";
 import SavePlay from "@/components/svg/SavePlay.vue";
 import SaveFile from "@/components/svg/SaveFile.vue";
 import SaveSql from "@/components/svg/SaveSql.vue";
@@ -647,28 +614,41 @@ button {
     }
   }
   .sql_right_table {
-    .sql_table {
-      width: 100%;
-      tr {
-        th {
-          padding-left: 36px;
-          font-family: Pretendard;
-          color: #fdb532;
-          font-size: 16px;
-          text-align: left;
-          height: 56px;
-          border-bottom: 1px solid #fdb532;
+    .sql_right_table_tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #fdb532;
+      height: 50px;
+      .sql_right_table_tab_btn_wrap {
+        display: flex;
+        align-items: center;
+        div {
+          display: flex;
+          align-items: center;
+          span {
+            color: #fdb532;
+            margin-right: 16px;
+            margin-left: 24px;
+          }
+          button {
+            padding: 0 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            width: 86px;
+            height: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: #404457;
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+            }
+          }
         }
-        td {
-          padding-left: 36px;
-          font-family: D2Coding;
-          color: #fff;
-          font-size: 16px;
-          height: 24px;
-        }
-      }
-      .back_gray {
-        background-color: rgba(255, 255, 255, 0.04);
       }
     }
   }

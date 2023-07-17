@@ -45,9 +45,44 @@ const router = createRouter({
       component: () => import("../components/SqlmodalView.vue"),
     },
     {
+      path: "/sqlchart",
+      name: "sqllog",
+      component: () => import("../components/SqlChartView.vue"),
+    },
+    {
+      path: "/sqllog",
+      name: "sqlchart",
+      component: () => import("../components/SqlLogView.vue"),
+    },
+    {
       path: "/tag",
       name: "tag",
       component: () => import("../views/TagView.vue"),
+    },
+    {
+      path: "/tagsetting",
+      name: "tagsetting",
+      component: () => import("../views/EditGeneralView.vue"),
+    },
+    {
+      path: "/data",
+      name: "data",
+      component: () => import("../views/EditDataView.vue"),
+    },
+    {
+      path: "/axes",
+      name: "axes",
+      component: () => import("../views/EditAxesView.vue"),
+    },
+    {
+      path: "/display",
+      name: "display",
+      component: () => import("../views/EditDisplayView.vue"),
+    },
+    {
+      path: "/timerange",
+      name: "timerange",
+      component: () => import("../views/EditTimeRangeView.vue"),
     },
   ],
 });

@@ -36,9 +36,11 @@
           <button>
             <Refresh></Refresh>
           </button>
-          <button>
-            <Gear></Gear>
-          </button>
+          <router-link to="/tagsetting">
+            <button>
+              <Gear></Gear>
+            </button>
+          </router-link>
           <button>
             <Bin></Bin>
           </button>
@@ -175,6 +177,8 @@ import Chartimg2 from "@/components/svg/Chartimg2.vue";
 import Chartimg3 from "@/components/svg/Chartimg3.vue";
 import Dropdown from "@/components/svg/Dropdown.vue";
 import Refresh from "@/components/svg/Refresh.vue";
+import Previous from "@/components/svg/Previous.vue";
+import Next from "@/components/svg/Next.vue";
 import Save from "@/components/svg/Save.vue";
 import Folder from "@/components/svg/Folder.vue";
 import Bin from "@/components/svg/Bin.vue";
@@ -201,9 +205,7 @@ button {
       fill: rgba(255, 255, 255, 0.5);
     }
   }
-  .dropdown {
-    stroke: rgba(255, 255, 255, 0.5);
-  }
+
   &:hover {
     span {
       color: rgba(255, 255, 255, 1);
@@ -225,6 +227,7 @@ button {
     display: flex;
     align-items: center;
     background-color: #262831;
+
     .backdrop {
       position: fixed;
       top: 0;

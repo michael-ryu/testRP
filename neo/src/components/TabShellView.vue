@@ -33,7 +33,7 @@
         <span class="tab_close"><TabClose></TabClose></span>
       </button>
     </router-link>
-    <router-link to="/work">
+    <router-link to="/worksheet">
       <button class="tab_button tab_none_select">
         <!-- tag anlyzer svg -->
         <div class="round_right_wrap">

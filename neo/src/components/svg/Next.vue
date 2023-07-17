@@ -4,6 +4,7 @@
     width="56"
     height="56"
     viewBox="0 0 56 56"
+    style="fill: none"
   >
     <defs>
       <filter
@@ -23,11 +24,7 @@
     </defs>
     <g
       data-name="사각형 1017"
-      style="
-        fill: rgba(255, 255, 255, 0.08);
-        stroke: rgba(255, 255, 255, 0.5);
-        stroke-width: 0.5px;
-      "
+      style="stroke: rgba(255, 255, 255, 0.5); stroke-width: 0.5px"
     >
       <rect width="56" height="56" rx="8" style="stroke: none" />
       <rect
@@ -44,7 +41,7 @@
         data-name="합치기 10"
         d="M.42 20.713a1.435 1.435 0 0 1 0-2.03l8.117-8.117L.42 2.45A1.435 1.435 0 0 1 2.449.42l9.131 9.131a1.435 1.435 0 0 1 .393 1.29l-.006.029a1.426 1.426 0 0 1-.38.7l-.007.007-9.131 9.136a1.435 1.435 0 0 1-2.029 0z"
         transform="translate(23 17.43)"
-        style="fill: #fff"
+        style="fill: rgba(255, 255, 255, 0.5)"
       />
     </g>
   </svg>

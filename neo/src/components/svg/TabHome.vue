@@ -4,6 +4,7 @@
     width="18"
     height="18"
     viewBox="0 0 18 18"
+    style="stroke: transparent"
   >
     <path
       data-name="사각형 994"

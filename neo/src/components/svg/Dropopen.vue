@@ -5,6 +5,7 @@
     height="120"
     viewBox="0 0 120 120"
     class="home_btn"
+    style="mix-blend-mode: luminosity; opacity: 0.4"
   >
     <g data-name="img_drop&amp;open">
       <path data-name="사각형 1132" style="fill: none" d="M0 0h120v120H0z" />

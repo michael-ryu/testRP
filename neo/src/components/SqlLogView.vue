@@ -164,8 +164,8 @@
       <!-- 우측 tab -->
       <div class="sql_right">
         <div class="sql_tab_right">
-          <router-link to="/shell">
-            <button class="sql_right_tab_btn sql_tab_select">
+          <router-link to="/sql">
+            <button class="sql_right_tab_btn sql_tab_none_select">
               <div class="sql_round_right_wrap">
                 <div class="round_right"></div>
               </div>
@@ -189,7 +189,7 @@
             </button>
           </router-link>
           <router-link to="/sqllog">
-            <button class="sql_right_tab_btn sql_tab_none_select">
+            <button class="sql_right_tab_btn sql_tab_select">
               <div class="sql_round_right_wrap">
                 <div class="round_right"></div>
               </div>
@@ -208,53 +208,9 @@
           </button>
         </div>
         <div class="sql_right_table">
-          <table class="sql_table">
-            <tr>
-              <th>ROWNUM</th>
-              <th>mtime (LOCAL)</th>
-              <th>avg(value)</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>2</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>4</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>6</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-            <tr class="back_gray">
-              <td>8</td>
-              <td>0000-00-00 00:00:00</td>
-              <td>0</td>
-            </tr>
-          </table>
+          <div class="sql_log_table_tab">
+            <button><Bin></Bin></button>
+          </div>
         </div>
       </div>
     </div>
@@ -263,6 +219,7 @@
 <script setup>
 import Play from "@/components/svg/Play.vue";
 import Date from "@/components/svg/Date.vue";
+import Bin from "@/components/svg/Bin.vue";
 import TagNext from "@/components/svg/TagNext.vue";
 import TagPrevious from "@/components/svg/TagPrevious.vue";
 import Dropdown from "@/components/svg/Dropdown.vue";
@@ -278,8 +235,8 @@ import Vertical from "@/components/svg/Vertical.vue";
 import Horizontal from "@/components/svg/Horizontal.vue";
 import TabClose from "@/components/svg/TabClose.vue";
 import DateModal from "@/components/DateModal.vue";
-import Setting from "../components/SettingView.vue";
-import Tab from "../components/TabView.vue";
+import Setting from "./SettingView.vue";
+import Tab from "./TabView.vue";
 import SavePlay from "@/components/svg/SavePlay.vue";
 import SaveFile from "@/components/svg/SaveFile.vue";
 import SaveSql from "@/components/svg/SaveSql.vue";
@@ -647,29 +604,12 @@ button {
     }
   }
   .sql_right_table {
-    .sql_table {
-      width: 100%;
-      tr {
-        th {
-          padding-left: 36px;
-          font-family: Pretendard;
-          color: #fdb532;
-          font-size: 16px;
-          text-align: left;
-          height: 56px;
-          border-bottom: 1px solid #fdb532;
-        }
-        td {
-          padding-left: 36px;
-          font-family: D2Coding;
-          color: #fff;
-          font-size: 16px;
-          height: 24px;
-        }
-      }
-      .back_gray {
-        background-color: rgba(255, 255, 255, 0.04);
-      }
+    .sql_log_table_tab {
+      height: 50px;
+      border-bottom: 1px solid #fdb532;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
     }
   }
 }

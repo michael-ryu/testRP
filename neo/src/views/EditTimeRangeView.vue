@@ -78,7 +78,7 @@
     <div class="edit_contents">
       <div class="edit_tab">
         <router-link to="/tagsetting">
-          <button class="edit_tab_btn edit_tab_select">General</button>
+          <button class="edit_tab_btn edit_tab_none_select">General</button>
         </router-link>
         <router-link to="/data">
           <button class="edit_tab_btn edit_tab_none_select">Data</button>
@@ -90,12 +90,62 @@
           <button class="edit_tab_btn edit_tab_none_select">Display</button>
         </router-link>
         <router-link to="/timerange">
-          <button class="edit_tab_btn edit_tab_none_select">Time Range</button>
+          <button class="edit_tab_btn edit_tab_select">Time Range</button>
         </router-link>
       </div>
-      <div class="edit_general_contents">
-        <div class="edit_general_contents_wrap"></div>
+      <div class="edit_time_contents_wrap">
+        <div class="edit_time_contents">
+          <div class="edit_time_content">
+            <span>From</span>
+            <button>
+              <div><Date></Date><span>0000-00-00 00:00:00</span></div>
+              <Dropdown></Dropdown>
+            </button>
+          </div>
+          <div class="edit_time_content">
+            <span>To</span>
+            <button>
+              <div><Date></Date><span>0000-00-00 00:00:00</span></div>
+              <Dropdown></Dropdown>
+            </button>
+          </div>
+          <div class="edit_time_content">
+            <span>Refreshing Every</span>
+            <button>
+              <div><DateRefresh></DateRefresh><span>off</span></div>
+              <Dropdown></Dropdown>
+            </button>
+          </div>
+        </div>
+        <div class="edit_quick_range_wrap">
+          <span>Quick Range</span>
+          <div class="edit_quick_range">
+            <button>Last 2 days</button>
+            <button>Last 7 days</button>
+            <button>Last 30 days</button>
+            <button>Last 90 days</button>
+          </div>
+          <div class="edit_quick_range">
+            <button>Last 6 Months</button>
+            <button>Last 1 years</button>
+            <button>Last 2 years</button>
+            <button>Last 5 years</button>
+          </div>
+          <div class="edit_quick_range">
+            <button>Last 5 minutes</button>
+            <button>Last 15 minutes</button>
+            <button>Last 30 minutes</button>
+            <button>Last 1 hour</button>
+          </div>
+          <div class="edit_quick_range">
+            <button>Last 3 hour</button>
+            <button>Last 6 hour</button>
+            <button>Last 12 hour</button>
+            <button>Last 24 hour</button>
+          </div>
+        </div>
       </div>
+
       <div class="edit_footer">
         <button class="edit_btn yellow">Apply</button>
         <button class="edit_btn blue">OK</button>
@@ -119,6 +169,9 @@ import Zoomout2 from "@/components/svg/Zoomout2.vue";
 import Zoomout4 from "@/components/svg/Zoomout4.vue";
 import Previous from "@/components/svg/Previous.vue";
 import Next from "@/components/svg/Next.vue";
+import Date from "@/components/svg/Date.vue";
+import DateRefresh from "@/components/svg/DateRefresh.vue";
+import Dropdown from "@/components/svg/Dropdown.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
@@ -149,7 +202,7 @@ button {
 }
 .outer {
   background-color: #404457;
-  height: 100%;
+  min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
@@ -273,13 +326,13 @@ button {
     }
   }
   .edit_contents {
-    width: calc(100% - 80px);
-    margin: 0 auto;
     .edit_tab {
       display: flex;
       align-items: center;
       padding: 16px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      width: calc(100% - 80px);
+      margin: 0 auto;
       .edit_tab_btn {
         width: 160px;
         height: 34px;
@@ -300,50 +353,67 @@ button {
         color: #fdb532;
       }
     }
-    .edit_general_contents {
-      padding: 60px 0;
+    .edit_time_contents_wrap {
       display: flex;
-
-      .edit_general_contents_wrap {
-        margin-right: 140px;
-        .edit_general_content {
-          margin-bottom: 8px;
+      height: 283px;
+      width: calc(100% - 80px);
+      margin: 0 auto;
+      span {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .edit_time_contents {
+        padding-top: 60px;
+        width: 420px;
+        margin-right: 120px;
+        .edit_time_content {
           display: flex;
-          span {
-            font-family: Pretendard;
-            font-size: 16px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
-          }
-          .edit_general_content_input {
+          justify-content: space-between;
+          align-items: center;
+          // border: 1px solid #fff;
+          margin-bottom: 8px;
+          button {
+            width: 260px;
+            height: 34px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 425px;
-            .relative_span {
-              position: relative;
-              .absolute_span {
-                position: absolute;
-                font-size: 12px;
-                top: 24px;
-                left: 0;
+            justify-content: space-between;
+            padding: 0 10px;
+            div {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              span {
+                margin-left: 10px;
               }
-            }
-            input {
-              width: 240px;
-              height: 34px;
-              border-radius: 6px;
-              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
-              margin-right: 4px;
             }
           }
         }
       }
     }
-    .edit_right_inputbox {
-      margin-bottom: 24px;
+    .edit_quick_range_wrap {
+      display: flex;
+      padding-top: 60px;
+      span {
+        margin-right: 60px;
+      }
+      .edit_quick_range {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 160px;
+
+        button {
+          font-family: Pretendard;
+          font-size: 16px;
+          font-weight: 500;
+          color: #4199ff;
+          margin-bottom: 8px;
+        }
+      }
     }
   }
   .edit_footer {

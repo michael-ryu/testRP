@@ -3,7 +3,7 @@
   <div class="tab">
     <router-link to="/">
       <button class="tab_button tab_logo">
-        <img src="@/assets/image/tab_logo.svg" />
+        <img src="@/assets/image/img_top_logo.png" />
       </button>
     </router-link>
     <!-- 홈모양 svg -->
@@ -68,7 +68,7 @@
         <div v-if="isPrefferenceModalOpen">
           <div class="prefference_modal_wrap">
             <div class="prefference_modal_title">
-              <div>
+              <div class="prefference_img_wrap">
                 <Prefference></Prefference>
                 <span>Preferences</span>
               </div>
@@ -93,7 +93,7 @@
             <div class="prefference_modal_btn_wrap">
               <button
                 @click="closePrefferenceModal"
-                class="prefference_modal_btn"
+                class="prefference_modal_btn blue_btn"
               >
                 OK
               </button>
@@ -115,7 +115,7 @@
           <div>
             <div class="lisence_modal_wrap">
               <div class="lisence_modal_title">
-                <div>
+                <div class="lisece_img_wrap">
                   <License></License>
                   <span>License</span>
                 </div>
@@ -149,7 +149,7 @@
               </div>
               <div class="lisence_modal_btn_wrap">
                 <span>Register License…</span>
-                <button @click="closeLisenceModal">Clase</button>
+                <button @click="closeLisenceModal">Close</button>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ import Plus from "@/components/svg/Plus.vue";
       width: 32px;
       height: 32px;
       right: 8px;
-      top: 5px;
+      top: 6px;
     }
     .tab_logo {
       position: relative;
@@ -241,6 +241,7 @@ import Plus from "@/components/svg/Plus.vue";
       justify-content: center;
       align-items: center;
       padding: 0;
+      width: 170px;
       img {
         padding: 0;
       }
@@ -455,6 +456,10 @@ import Plus from "@/components/svg/Plus.vue";
             color: rgba(255, 255, 255, 1);
           }
           padding: 0 30px;
+          .prefference_img_wrap {
+            display: flex;
+            align-items: center;
+          }
         }
         .prefference_modal_contents {
           display: flex;
@@ -501,9 +506,21 @@ import Plus from "@/components/svg/Plus.vue";
             border: solid 0.5px #d9d9d9;
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
-            &:hover {
-              background-color: #4199ff;
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              z-index: 1;
             }
+          }
+          .blue_btn {
+            background-color: #4199ff;
           }
         }
       }
@@ -525,6 +542,10 @@ import Plus from "@/components/svg/Plus.vue";
           justify-content: space-between;
           margin-top: 25px;
           margin-bottom: 45px;
+          .lisece_img_wrap {
+            display: flex;
+            align-items: center;
+          }
           svg {
             fill: rgba(255, 255, 255, 1);
             stroke: rgba(255, 255, 255, 1);
@@ -568,8 +589,17 @@ import Plus from "@/components/svg/Plus.vue";
             border: solid 0.5px #d9d9d9;
             background-color: rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 1);
-            &:hover {
-              background-color: #4199ff;
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              z-index: 1;
             }
           }
         }

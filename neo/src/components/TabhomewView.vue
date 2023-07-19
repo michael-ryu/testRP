@@ -3,7 +3,7 @@
   <div class="tab">
     <router-link to="/">
       <button class="tab_button tab_logo">
-        <img src="@/assets/image/tab_logo.svg" />
+        <img src="@/assets/image/img_top_logo.png" />
       </button>
     </router-link>
     <!-- 홈모양 svg -->
@@ -115,7 +115,7 @@
           <div>
             <div class="lisence_modal_wrap">
               <div class="lisence_modal_title">
-                <div>
+                <div class="lisece_img_wrap">
                   <License></License>
                   <span>License</span>
                 </div>
@@ -149,7 +149,7 @@
               </div>
               <div class="lisence_modal_btn_wrap">
                 <span>Register License…</span>
-                <button @click="closeLisenceModal">Clase</button>
+                <button @click="closeLisenceModal">Close</button>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ import Plus from "@/components/svg/Plus.vue";
       width: 32px;
       height: 32px;
       right: 8px;
-      top: 5px;
+      top: 6px;
     }
     .tab_logo {
       position: relative;
@@ -533,6 +533,10 @@ import Plus from "@/components/svg/Plus.vue";
             color: rgba(255, 255, 255, 1);
           }
           padding: 0 30px;
+          .lisece_img_wrap {
+            display: flex;
+            align-items: center;
+          }
         }
         .lisence_modal_contents_wrap {
           padding: 0 60px;
@@ -550,7 +554,6 @@ import Plus from "@/components/svg/Plus.vue";
         }
         .lisence_modal_btn_wrap {
           margin: 63px 0 42px 0;
-
           display: flex;
           justify-content: space-between;
           align-items: center;

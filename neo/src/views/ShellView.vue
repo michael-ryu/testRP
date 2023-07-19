@@ -14,7 +14,7 @@ import TabShell from "@/components/TabShellView.vue";
 
 .outer {
   background-color: #1b1c21;
-  height: 100%;
+  min-height: 100vh;
   .shell_tab {
     height: 54px;
     display: flex;

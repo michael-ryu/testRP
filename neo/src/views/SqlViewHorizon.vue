@@ -31,8 +31,8 @@
             <div class="save_modal_wrap">
               <div class="save_modal_tilte">
                 <div>
-                  <Save></Save>
-                  <span>Save</span>
+                  <Folder></Folder>
+                  <span>Open</span>
                 </div>
                 <button @click="closeSaveModal"><TabClose></TabClose></button>
               </div>
@@ -155,129 +155,8 @@
             <Folder></Folder>
           </button>
           <div class="backdrop" v-if="isOpenModalOpen"></div>
-          <div class="save_modal" v-if="isOpenModalOpen">
-            <div class="save_modal_wrap">
-              <div class="save_modal_tilte">
-                <div>
-                  <Folder></Folder>
-                  <span>Open</span>
-                </div>
-                <button @click="closeOpenModal"><TabClose></TabClose></button>
-              </div>
-              <div class="save_modal_top">
-                <div>
-                  <button class="save_modal_top_btn">
-                    <TagPrevious></TagPrevious>
-                  </button>
-                  <button class="save_modal_top_btn">
-                    <TagNext></TagNext>
-                  </button>
-                </div>
-                <button class="save_modal_top_adress_btn">
-                  <SaveHome></SaveHome>
-                  <SavePlay></SavePlay>
-                </button>
-                <button><SaveNew></SaveNew></button>
-              </div>
-              <div class="save_modal_contents">
-                <div class="save_modal_contents_title">
-                  <div class="save_modal_name">Name</div>
-                  <div class="save_modal_date">Last modified</div>
-                  <div class="save_modal_size">Size</div>
-                </div>
-                <div class="save_modal_content_wrap">
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveFile></SaveFile>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                  <div class="save_modal_content">
-                    <button>
-                      <div class="save_modal_name">
-                        <SaveSql></SaveSql>Folder
-                      </div>
-                      <div class="save_modal_date">8day ago</div>
-                      <div class="save_modal_size">3 KB</div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="save_modal_footer">
-                <button @click="closeOpenModal" class="save_modal_btn blue_btn">
-                  OK
-                </button>
-                <button @click="closeOpenModal" class="save_modal_btn last">
-                  Cancel
-                </button>
-              </div>
-            </div>
+          <div class="open_modal" v-if="isOpenModalOpen">
+            <div class="open_modal_wrap"></div>
           </div>
         </div>
         <div class="sql_left_table"></div>
@@ -322,12 +201,12 @@
             </button>
           </router-link>
           <router-link to="/sql">
-            <button class="sql_vertical sql_btn_active">
+            <button class="sql_vertical">
               <Vertical></Vertical>
             </button>
           </router-link>
           <router-link to="/sqlhorizon">
-            <button class="sql_horizontal">
+            <button class="sql_horizontal sql_btn_active">
               <Horizontal></Horizontal>
             </button>
           </router-link>
@@ -441,26 +320,27 @@ button {
   height: 100vh;
   .sql {
     display: flex;
+    flex-direction: column;
     height: 100%;
   }
   .sql_left {
     background-color: #1b1c21;
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: relative;
     &::after {
       content: "";
-      width: 5px;
-      height: 100%;
+      width: 100%;
+      height: 8px;
       position: absolute;
-      top: 0;
+      bottom: 0px;
       right: 0;
       background-color: #262831;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }
     .sql_tab_left {
       background-color: #262831;
       height: 54px;
-      // border: 1px solid #fff;
       display: flex;
       align-items: center;
       position: relative;
@@ -663,7 +543,7 @@ button {
   }
   .sql_right {
     background-color: #1b1c21;
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: relative;
 

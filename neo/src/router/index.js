@@ -30,6 +30,11 @@ const router = createRouter({
       component: () => import("../views/SqlView.vue"),
     },
     {
+      path: "/sqlhorizon",
+      name: "sqlhorizon",
+      component: () => import("../views/SqlViewHorizon.vue"),
+    },
+    {
       path: "/shell",
       name: "shell",
       component: () => import("../views/ShellView.vue"),

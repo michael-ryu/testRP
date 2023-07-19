@@ -157,7 +157,7 @@
           </div>
         </div>
         <div class="tag_modal_footer">
-          <button class="tag_modal_footer_btn">OK</button>
+          <button class="tag_modal_footer_btn blue_btn">OK</button>
           <button class="tag_modal_footer_btn last">Cancel</button>
         </div>
       </div>
@@ -221,7 +221,7 @@ button {
 }
 .outer {
   background-color: #1b1c21;
-  height: 100%;
+  min-height: 100vh;
   .tag_tab {
     height: 54px;
     display: flex;
@@ -673,9 +673,21 @@ button {
         background-color: rgba(255, 255, 255, 0.2);
         color: rgba(255, 255, 255, 1);
         margin-right: 8px;
-        &:hover {
-          background-color: #4199ff;
+        position: relative;
+
+        &:hover::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
+          z-index: 1;
         }
+      }
+      .blue_btn {
+        background-color: #4199ff;
       }
       .last {
         margin-right: 0;

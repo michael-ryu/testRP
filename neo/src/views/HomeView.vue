@@ -9,47 +9,49 @@
       </div>
       <!-- btn 부분  -->
       <div class="btn_wrap">
-        <button class="btn_box">
-          <div class="btn_img_wrap">
-            <Sql></Sql>
-          </div>
-          <p class="home_btn_text">SQL</p>
-        </button>
-        <button class="btn_box">
-          <div class="btn_img_wrap">
-            <Tql></Tql>
-          </div>
-          <p class="home_btn_text">TQL</p>
-        </button>
-        <button class="btn_box">
-          <div class="btn_img_wrap">
-            <Taganalyzer></Taganalyzer>
-          </div>
-          <p class="home_btn_text">Tag Analyzer</p>
-        </button>
-        <router-link to="/shell">
-          <button class="btn_box">
-            <div class="btn_img_wrap">
-              <Shell></Shell>
-            </div>
-            <p class="home_btn_text">Shell</p>
+        <div class="home_btn_box">
+          <button class="home_btn">
+            <img src="@/assets/image/btn_main_sql.png" />
           </button>
+          <p>SQL</p>
+        </div>
+        <div class="home_btn_box">
+          <button class="home_btn">
+            <img src="@/assets/image/btn_main_tql.png" />
+          </button>
+          <p>TQL</p>
+        </div>
+        <div class="home_btn_box">
+          <button class="home_btn">
+            <img src="@/assets/image/btn_main_taganalyzer.png" />
+          </button>
+          <p>Tag Analyzer</p>
+        </div>
+        <router-link to="/shell">
+          <div class="home_btn_box">
+            <button class="home_btn">
+              <img src="@/assets/image/btn_main_shell.png" />
+            </button>
+            <p>Shell</p>
+          </div>
         </router-link>
         <router-link to="/worksheet">
-          <button class="btn_box">
-            <div class="btn_img_wrap">
-              <Worksheet></Worksheet>
-            </div>
-            <p class="home_btn_text">Worksheet</p>
-          </button>
+          <div class="home_btn_box">
+            <button class="home_btn">
+              <img src="@/assets/image/btn_main_worksheet.png" />
+            </button>
+            <p>Worksheet</p>
+          </div>
         </router-link>
         <router-link to="/homew">
-          <button class="btn_box btn_drop">
-            <div class="btn_img_wrap">
-              <Dropopen></Dropopen>
-            </div>
+          <div class="home_drop_box">
+            <button class="home_btn">
+              <div class="btn_img_wrap">
+                <Dropopen></Dropopen>
+              </div>
+            </button>
             <p class="home_btn_text">Drop & Open</p>
-          </button>
+          </div>
         </router-link>
       </div>
       <!-- 아래 바로가기 부분 -->
@@ -126,7 +128,7 @@ button {
 }
 .outer {
   background-color: #1b1c21;
-  height: 100%;
+  min-height: 100vh;
   .inner {
     padding: 0 11.5%;
     .title {
@@ -148,57 +150,67 @@ button {
     .btn_wrap {
       display: flex;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 48px;
       border-bottom: 1px solid #404457;
       padding-bottom: 48px;
-      .btn_drop {
-        opacity: 0.4;
-      }
-      .btn_box {
-        width: 224px;
-        height: 224px;
-        margin-right: 20px;
+
+      .home_drop_box {
         margin-top: 20px;
-        background-color: rgba(0, 0, 0, 0.18);
-        border-radius: 10px;
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
-        .btn_img_wrap {
-          position: relative;
-          &::after {
-            position: absolute;
-            content: "";
-            bottom: -7px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 1px;
-            background-color: #fff;
-          }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .home_btn {
+          width: 180px;
+          height: 180px;
+          border-radius: 30px;
+          box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+          background-color: rgba(255, 255, 255, 0.08);
+          border: solid 2px rgba(255, 255, 255, 0.3);
+          border-style: dashed;
         }
         p {
           font-family: Pretendard;
-          font-size: 20px;
+          font-size: 24px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
-          padding-top: 25px;
+          color: #fff;
+          margin-top: 16px;
         }
-        &:hover {
-          box-shadow: inset 0 -2px 62px 0 rgba(65, 153, 255, 0.5);
-          border: solid 1px #4199ff;
-          cursor: pointer;
-          svg {
-            mix-blend-mode: normal;
-            opacity: 1;
-          }
-          p {
-            color: rgba(255, 255, 255, 1);
-          }
+      }
+      .home_btn_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 40px;
+        margin-top: 20px;
+
+        .btn_img_wrap {
+          position: relative;
+        }
+        p {
+          font-family: Pretendard;
+          font-size: 24px;
+          font-weight: 500;
+          color: #fff;
+          margin-top: 16px;
         }
       }
       .home_btn {
-        mix-blend-mode: luminosity;
-        opacity: 0.5;
+        position: relative;
+        &:hover::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+        img {
+          width: 180px;
+          height: 180px;
+        }
       }
     }
     .sub_tab_wrap {

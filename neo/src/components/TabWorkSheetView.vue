@@ -3,7 +3,7 @@
   <div class="tab">
     <router-link to="/">
       <button class="tab_button tab_logo">
-        <img src="@/assets/image/tab_logo.svg" />
+        <img src="@/assets/image/img_top_logo.png" />
       </button>
     </router-link>
     <!-- 홈모양 svg -->
@@ -148,7 +148,7 @@
               </div>
               <div class="lisence_modal_btn_wrap">
                 <span>Register License…</span>
-                <button @click="closeLisenceModal">Clase</button>
+                <button @click="closeLisenceModal">Close</button>
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@ import Plus from "@/components/svg/Plus.vue";
       width: 32px;
       height: 32px;
       right: 8px;
-      top: 5px;
+      top: 6px;
     }
     .tab_logo {
       position: relative;

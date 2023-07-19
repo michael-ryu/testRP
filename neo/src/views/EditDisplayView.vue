@@ -78,7 +78,7 @@
     <div class="edit_contents">
       <div class="edit_tab">
         <router-link to="/tagsetting">
-          <button class="edit_tab_btn edit_tab_select">General</button>
+          <button class="edit_tab_btn edit_tab_none_select">General</button>
         </router-link>
         <router-link to="/data">
           <button class="edit_tab_btn edit_tab_none_select">Data</button>
@@ -87,14 +87,87 @@
           <button class="edit_tab_btn edit_tab_none_select">Axes</button>
         </router-link>
         <router-link to="/display">
-          <button class="edit_tab_btn edit_tab_none_select">Display</button>
+          <button class="edit_tab_btn edit_tab_select">Display</button>
         </router-link>
         <router-link to="/timerange">
           <button class="edit_tab_btn edit_tab_none_select">Time Range</button>
         </router-link>
       </div>
-      <div class="edit_general_contents">
-        <div class="edit_general_contents_wrap"></div>
+      <div class="edit_display_contents_wrap">
+        <div class="edit_display_contents">
+          <div class="edit_display_content">
+            <span>Chart Type</span>
+            <div class="edit_display_btn_wrap">
+              <button class="edit_display_btn">
+                <img src="@/assets/image/img_chart_01.png" /></button
+              ><button class="edit_display_btn">
+                <img src="@/assets/image/img_chart_02.png" /></button
+              ><button class="edit_display_btn">
+                <img src="@/assets/image/img_chart_03.png" />
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="edit_display_content_checkbox">
+              <label>
+                <input type="checkbox" />
+                <span>Display data points in the line chart</span>
+              </label>
+            </div>
+            <div class="edit_display_content_checkbox">
+              <label>
+                <input type="checkbox" />
+                <span>Display legend</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="edit_display_contents">
+          <div class="edit_display_content_input dispaly_content_input_first">
+            <span>Point Radius</span>
+            <input
+              type="number"
+              id="name"
+              name="title"
+              required
+              minlength="0"
+              maxlength="12"
+            />
+          </div>
+          <div class="edit_display_content_input">
+            <span>Opacity Of Fill Area</span>
+            <input
+              type="number"
+              id="name"
+              name="title"
+              required
+              minlength="0"
+              maxlength="12"
+            />
+          </div>
+          <div class="edit_display_content_input">
+            <span>Line Thickness</span>
+            <input
+              type="number"
+              id="name"
+              name="title"
+              required
+              minlength="0"
+              maxlength="12"
+            />
+          </div>
+          <div class="edit_display_content_input">
+            <span>Border Color</span>
+            <input
+              type="number"
+              id="name"
+              name="title"
+              required
+              minlength="0"
+              maxlength="12"
+            />
+          </div>
+        </div>
       </div>
       <div class="edit_footer">
         <button class="edit_btn yellow">Apply</button>
@@ -149,7 +222,7 @@ button {
 }
 .outer {
   background-color: #404457;
-  height: 100%;
+  min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
@@ -273,13 +346,14 @@ button {
     }
   }
   .edit_contents {
-    width: calc(100% - 80px);
-    margin: 0 auto;
     .edit_tab {
       display: flex;
       align-items: center;
       padding: 16px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      width: calc(100% - 80px);
+      margin: 0 auto;
+
       .edit_tab_btn {
         width: 160px;
         height: 34px;
@@ -300,50 +374,69 @@ button {
         color: #fdb532;
       }
     }
-    .edit_general_contents {
-      padding: 60px 0;
+    .edit_display_contents_wrap {
       display: flex;
+      height: 283px;
+      width: calc(100% - 80px);
+      margin: 0 auto;
+      .edit_display_contents {
+        width: 420px;
+        margin-top: 48px;
+        margin-right: 100px;
+        margin-bottom: 60px;
 
-      .edit_general_contents_wrap {
-        margin-right: 140px;
-        .edit_general_content {
-          margin-bottom: 8px;
+        span {
+          font-family: Pretendard;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.5);
+        }
+        .edit_display_content {
           display: flex;
-          span {
-            font-family: Pretendard;
-            font-size: 16px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
-          }
-          .edit_general_content_input {
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 36px;
+          .edit_display_btn_wrap {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 425px;
-            .relative_span {
-              position: relative;
-              .absolute_span {
-                position: absolute;
-                font-size: 12px;
-                top: 24px;
-                left: 0;
+            .edit_display_btn {
+              width: 102px;
+              &:hover {
+                box-shadow: inset 0 -2px 62px 0 rgba(65, 153, 255, 0.5);
+                border: solid 0.5px #4199ff;
               }
-            }
-            input {
-              width: 240px;
-              height: 34px;
-              border-radius: 6px;
-              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
-              margin-right: 4px;
+              img {
+                width: 100%;
+                height: 100%;
+              }
             }
           }
         }
+        input[type="checkbox"]:checked + span {
+          color: #4199ff;
+        }
+        .edit_display_content_checkbox {
+          margin-bottom: 24px;
+        }
+        .edit_display_content_input {
+          margin-bottom: 8px;
+          input {
+            width: 180px;
+            height: 34px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
+          }
+        }
       }
-    }
-    .edit_right_inputbox {
-      margin-bottom: 24px;
+      .edit_display_content_input {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .dispaly_content_input_first {
+        margin-top: 12px;
+      }
     }
   }
   .edit_footer {

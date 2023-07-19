@@ -215,7 +215,7 @@ button {
 }
 .outer {
   background-color: #404457;
-  height: 100%;
+  min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
@@ -339,13 +339,13 @@ button {
     }
   }
   .edit_contents {
-    width: calc(100% - 80px);
-    margin: 0 auto;
     .edit_tab {
       display: flex;
       align-items: center;
       padding: 16px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      width: calc(100% - 80px);
+      margin: 0 auto;
       .edit_tab_btn {
         width: 160px;
         height: 34px;
@@ -367,7 +367,10 @@ button {
       }
     }
     .edit_data_contents_wrap {
-      padding: 10px 0;
+      width: calc(100% - 80px);
+      margin: 0 auto;
+      height: 283px;
+      margin-top: 10px;
       .edit_data_title {
         font-family: Pretendard;
         color: rgba(255, 255, 255, 0.5);

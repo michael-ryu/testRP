@@ -124,7 +124,7 @@ button {
 }
 .outer {
   background-color: #f7f7f8;
-  height: 100%;
+  min-height: 100vh;
   .inner {
     padding: 0 18.75%;
     .title {

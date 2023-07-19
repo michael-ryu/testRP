@@ -137,7 +137,7 @@ button {
 }
 .outer {
   background-color: #1b1c21;
-  height: 100%;
+  min-height: 100vh;
   overflow: scroll;
   .worksheet_tab {
     height: 54px;

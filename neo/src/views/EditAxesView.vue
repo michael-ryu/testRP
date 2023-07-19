@@ -95,38 +95,40 @@
       </div>
 
       <div class="edit_axes_contents_wrap">
-        <div class="edit_axes_contents">
-          <div class="edit_axes_content_title">X-Axis</div>
-          <div class="edit_axes_content_input">
-            <span>Interval</span>
-            <input
-              type="text"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
-          </div>
-          <div class="edit_axes_content_checkbox">
-            <label>
-              <input type="checkbox" />
-              <span>Displays the X-Axis tick line</span>
-            </label>
-          </div>
-          <div class="edit_axes_content_input">
-            <span>Pixels between tick marks</span>
-            <input
-              type="number"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
+        <div class="axes_left">
+          <div class="edit_axes_contents">
+            <div class="edit_axes_content_title">X-Axis</div>
+            <div class="edit_axes_content_input">
+              <span>Interval</span>
+              <input
+                type="text"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
+            </div>
+            <div class="edit_axes_content_checkbox axes_margin_bottom">
+              <label>
+                <input type="checkbox" />
+                <span>Displays the X-Axis tick line</span>
+              </label>
+            </div>
+            <div class="edit_axes_content_input">
+              <span>Pixels between tick marks</span>
+              <input
+                type="number"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
+            </div>
           </div>
         </div>
-        <div class="edit_axes_contents">
+        <div class="edit_axes_contents axes_center">
           <div class="edit_axes_content_title">Y-Axis</div>
           <div class="edit_axes_content_checkbox">
             <label>
@@ -134,7 +136,7 @@
               <span>The scale of the Y-axis start at zero</span>
             </label>
           </div>
-          <div class="edit_axes_content_checkbox">
+          <div class="edit_axes_content_checkbox axes_margin_bottom">
             <label>
               <input type="checkbox" />
               <span>Displays the X-Axis tick line</span>
@@ -142,109 +144,130 @@
           </div>
           <div class="edit_axes_content_input">
             <span>Custom scale</span>
-            <input
-              type="number"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
-            <input
-              type="number"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
+            <div>
+              <input
+                type="number"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
+              <span class="axes_number_span">~</span>
+              <input
+                type="number"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
+            </div>
           </div>
           <div class="edit_axes_content_input">
             <span>Custom scale for raw data chart</span>
-            <input
-              type="number"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
-            <input
-              type="number"
-              id="name"
-              name="title"
-              required
-              minlength="0"
-              maxlength="12"
-            />
-          </div>
-        </div>
-        <div class="edit_axes_contents">
-          <div>
-            <div :class="{ disabled: !isChecked }">
-              <div class="edit_axes_content_checkbox">
-                <label>
-                  <input type="checkbox" v-model="isChecked" />
-                  <span>The scale of the Y-axis start at zero</span>
-                </label>
-              </div>
-              <div class="edit_axes_content_checkbox">
-                <label>
-                  <input type="checkbox" :disabled="!isChecked" />
-                  <span>Displays the X-Axis tick line</span>
-                </label>
-              </div>
-              <div class="edit_axes_content_input">
-                <span>Custom scale</span>
-                <input
-                  type="number"
-                  id="name"
-                  name="title"
-                  :disabled="!isChecked"
-                  required
-                  minlength="0"
-                  maxlength="12"
-                />
-                <input
-                  type="number"
-                  id="name"
-                  name="title"
-                  :disabled="!isChecked"
-                  required
-                  minlength="0"
-                  maxlength="12"
-                />
-              </div>
-              <div class="edit_axes_content_input">
-                <span>Custom scale for raw data chart</span>
-                <input
-                  type="number"
-                  id="name"
-                  name="title"
-                  :disabled="!isChecked"
-                  required
-                  minlength="0"
-                  maxlength="12"
-                />
-                <input
-                  type="number"
-                  id="name"
-                  name="title"
-                  :disabled="!isChecked"
-                  required
-                  minlength="0"
-                  maxlength="12"
-                />
-              </div>
+            <div>
+              <input
+                type="number"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
+              <span class="axes_number_span">~</span>
+              <input
+                type="number"
+                id="name"
+                name="title"
+                required
+                minlength="0"
+                maxlength="12"
+              />
             </div>
           </div>
         </div>
-        <div>
-          <button>
-            <span>avg</span><span>TAG_0001</span><TabClose></TabClose>
-          </button>
+        <div class="edit_axes_contents axes_right">
           <div>
-            <button></button>
+            <div class="axes_block_check">
+              <label>
+                <input type="checkbox" v-model="isChecked" />
+                <span>Set additional Y-axis</span>
+              </label>
+            </div>
+            <div class="axes_block_wrap" :class="{ disabled: !isChecked }">
+              <div class="axes_block">
+                <div class="edit_axes_content_checkbox">
+                  <label>
+                    <input type="checkbox" :disabled="!isChecked" />
+                    <span>The scale of the Y-axis start at zero</span>
+                  </label>
+                </div>
+                <div class="edit_axes_content_checkbox axes_margin_bottom">
+                  <label class="axes_label">
+                    <input type="checkbox" :disabled="!isChecked" />
+                    <span>Displays the X-Axis tick line</span>
+                  </label>
+                </div>
+                <div class="edit_axes_content_input">
+                  <span>Custom scale</span>
+                  <div>
+                    <input
+                      type="number"
+                      id="name"
+                      name="title"
+                      :disabled="!isChecked"
+                      required
+                      minlength="0"
+                      maxlength="12"
+                    />
+                    <span class="axes_number_span">~</span>
+                    <input
+                      type="number"
+                      id="name"
+                      name="title"
+                      :disabled="!isChecked"
+                      required
+                      minlength="0"
+                      maxlength="12"
+                    />
+                  </div>
+                </div>
+                <div class="edit_axes_content_input">
+                  <span>Custom scale for raw data chart</span>
+                  <div>
+                    <input
+                      type="number"
+                      id="name"
+                      name="title"
+                      :disabled="!isChecked"
+                      required
+                      minlength="0"
+                      maxlength="12"
+                    />
+                    <span class="axes_number_span">~</span>
+                    <input
+                      type="number"
+                      id="name"
+                      name="title"
+                      :disabled="!isChecked"
+                      required
+                      minlength="0"
+                      maxlength="12"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button class="axis_select_btn">
+                  <span>Select a tag for the additional Y-axis</span
+                  ><Dropdown></Dropdown>
+                </button>
+                <div class="axis_select_contents_wrap">
+                  <button class="axis_select_content"></button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -271,6 +294,7 @@ import Zoomout2 from "@/components/svg/Zoomout2.vue";
 import Zoomout4 from "@/components/svg/Zoomout4.vue";
 import Previous from "@/components/svg/Previous.vue";
 import Next from "@/components/svg/Next.vue";
+import Dropdown from "../components/svg/Dropdown.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
@@ -301,7 +325,7 @@ button {
 }
 .outer {
   background-color: #404457;
-  height: 100%;
+  min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
@@ -436,52 +460,169 @@ button {
         color: #fdb532;
       }
     }
-    .edit_general_contents {
-      padding: 60px 0;
+    .edit_axes_contents_wrap {
       display: flex;
+      color: rgba(255, 255, 255, 0.5);
+      height: 283px;
+      input[type="checkbox"]:checked + span {
+        color: #4199ff;
+      }
 
-      .edit_general_contents_wrap {
-        margin-right: 140px;
-        .edit_general_content {
-          margin-bottom: 8px;
+      .edit_axes_contents {
+        padding: 28px 30px 20px 0;
+
+        input[type="checkbox"] {
+          margin-right: 4px;
+          margin-left: 0;
+        }
+        input[type="text"] {
+          width: 180px;
+          height: 34px;
+          border-radius: 6px;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+          border: solid 0.5px rgba(255, 255, 255, 0.5);
+          background-color: rgba(38, 40, 49, 0.5);
+          color: #fff;
+          padding: 0 10px;
+        }
+        input[type="number"] {
+          width: 180px;
+          height: 34px;
+          border-radius: 6px;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+          border: solid 0.5px rgba(255, 255, 255, 0.5);
+          background-color: rgba(38, 40, 49, 0.5);
+          color: #fff;
+          padding: 0 10px;
+        }
+
+        .edit_axes_content_title {
+          color: rgba(255, 255, 255, 1);
+          padding: 0;
+        }
+        .edit_axes_content_input {
+          padding: 0 10px;
+          padding-top: 8px;
           display: flex;
-          span {
-            font-family: Pretendard;
-            font-size: 16px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
+          justify-content: space-between;
+          align-items: center;
+          .axes_number_span {
+            color: rgba(255, 255, 255, 1);
+            padding: 0 10px;
           }
-          .edit_general_content_input {
+        }
+        .edit_axes_content_checkbox {
+          padding: 0 10px;
+          padding-top: 16px;
+        }
+        .axes_margin_bottom {
+          margin-bottom: 8px;
+        }
+        .axes_block_wrap {
+          display: flex;
+          .axis_select_btn {
+            margin-top: 8px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 425px;
-            .relative_span {
-              position: relative;
-              .absolute_span {
-                position: absolute;
-                font-size: 12px;
-                top: 24px;
-                left: 0;
+            justify-content: space-between;
+            padding: 0 10px;
+            width: 342px;
+            height: 34px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
+            span {
+              color: rgba(255, 255, 255, 0.5);
+            }
+            &:hover {
+              span {
+                color: rgba(255, 255, 255, 1);
               }
             }
-            input {
-              width: 240px;
-              height: 34px;
-              border-radius: 6px;
-              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
-              margin-right: 4px;
+          }
+          .axis_select_contents_wrap {
+            width: 340px;
+            height: 150px;
+            border-radius: 8px;
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
+            margin-top: 8px;
+          }
+          .axes_block {
+            width: 510px;
+            margin-right: 30px;
+            .axes_block_check {
+              padding-top: 22px;
             }
           }
         }
       }
-    }
-    .edit_right_inputbox {
-      margin-bottom: 24px;
+      .disabled {
+        opacity: 0.3;
+        pointer-events: none;
+        button {
+          span {
+            color: rgba(255, 255, 255, 0.5);
+          }
+          svg {
+            stroke: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+      .axes_left {
+        width: 460px;
+        position: relative;
+        margin-right: 10px;
+      }
+      .axes_left::after {
+        content: "";
+        position: absolute;
+        width: 0.5px;
+        height: 253px;
+        background-color: rgba(255, 255, 255, 0.5);
+        top: 16px;
+        right: 10px;
+      }
+      .axes_center {
+        width: 500px;
+        position: relative;
+        margin-right: 10px;
+        input[type="number"] {
+          width: 80px;
+          height: 34px;
+          border-radius: 6px;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+          border: solid 0.5px rgba(255, 255, 255, 0.5);
+          background-color: rgba(38, 40, 49, 0.5);
+          color: #fff;
+          padding: 0 10px;
+        }
+      }
+      .axes_center::after {
+        content: "";
+        position: absolute;
+        width: 0.5px;
+        height: 253px;
+        background-color: rgba(255, 255, 255, 0.5);
+        top: 16px;
+        right: 10px;
+      }
+      .axes_right {
+        input[type="number"] {
+          width: 80px;
+          height: 34px;
+          border-radius: 6px;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+          border: solid 0.5px rgba(255, 255, 255, 0.5);
+          background-color: rgba(38, 40, 49, 0.5);
+          color: #fff;
+          padding: 0 10px;
+        }
+      }
     }
   }
+
   .edit_footer {
     display: flex;
     justify-content: center;
@@ -522,6 +663,9 @@ button {
       margin-right: 0;
     }
   }
+}
+.disabled {
+  opacity: 0.3;
 }
 </style>
 <script>

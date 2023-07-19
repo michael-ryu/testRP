@@ -202,8 +202,7 @@ button {
 }
 .outer {
   background-color: #404457;
-  height: 100%;
-  overflow: scroll;
+  min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
@@ -329,6 +328,7 @@ button {
   .edit_contents {
     width: calc(100% - 80px);
     margin: 0 auto;
+
     .edit_tab {
       display: flex;
       align-items: center;
@@ -355,10 +355,11 @@ button {
       }
     }
     .edit_general_contents {
-      padding: 60px 0;
       display: flex;
+      height: 283px;
 
       .edit_general_contents_wrap {
+        margin-top: 60px;
         margin-right: 140px;
         .edit_general_content {
           margin-bottom: 8px;

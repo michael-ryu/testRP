@@ -413,31 +413,12 @@ import SaveNew from "@/components/svg/SaveNew.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    stroke: rgba(255, 255, 255, 0.5);
-    fill: rgba(255, 255, 255, 0.5);
-
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  &:hover {
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      stroke: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .outer {
   background-color: #1b1c21;
+  @include theme() {
+    background-color: theme-get("bg-color1") !important;
+  }
   height: 100vh;
   .sql {
     display: flex;
@@ -445,6 +426,9 @@ button {
   }
   .sql_left {
     background-color: #1b1c21;
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
     width: 50%;
     height: 100%;
     position: relative;
@@ -456,9 +440,15 @@ button {
       top: 0;
       right: 0;
       background-color: #262831;
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
     }
     .sql_tab_left {
       background-color: #262831;
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
       height: 54px;
       // border: 1px solid #fff;
       display: flex;
@@ -472,7 +462,13 @@ button {
         border-radius: 10px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
         border: solid 0.5px rgba(255, 255, 255, 0.5);
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+        }
         background-color: #262831;
+        @include theme() {
+          background-color: theme-get("btn-bg") !important;
+        }
         width: 256px;
         height: 32px;
         margin-left: 20px;
@@ -488,17 +484,15 @@ button {
           font-size: 16px;
           font-weight: 500;
           color: rgba(255, 255, 255, 0.5);
+          @include theme() {
+            color: theme-get("none-hover") !important;
+          }
         }
         .modal_arrow {
           position: absolute;
           right: 0px;
         }
-        &:hover {
-          border: solid 0.5px rgba(255, 255, 255, 1);
-          span {
-            color: rgba(255, 255, 255, 1);
-          }
-        }
+        @include hover-border;
       }
       .sql_save_btn {
         position: absolute;
@@ -511,9 +505,15 @@ button {
         transform: translate(-50%, -50%);
         width: 780px;
         background-color: #404457;
+        @include theme() {
+          color: solid 0.5px theme-get("modal-bg") !important;
+        }
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
           inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
         border: solid 0.5px rgba(255, 255, 255, 0.5);
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+        }
         border-radius: 10px;
         z-index: 999;
         .save_modal_wrap {
@@ -524,10 +524,19 @@ button {
             padding: 24px 30px 28px 26px;
             svg {
               fill: rgba(255, 255, 255, 1);
+              @include theme() {
+                fill: solid 0.5px theme-get("hover-text") !important;
+              }
               stroke: rgba(255, 255, 255, 1);
+              @include theme() {
+                stroke: solid 0.5px theme-get("hover-text") !important;
+              }
             }
             span {
               color: rgba(255, 255, 255, 1);
+              @include theme() {
+                color: solid 0.5px theme-get("hover-text") !important;
+              }
             }
             div {
               display: flex;
@@ -643,6 +652,7 @@ button {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
                 z-index: 1;
               }
             }

@@ -31,6 +31,9 @@
         <TabSql></TabSql>
         <span>SQL</span>
         <!-- 닫기 svg -->
+        <div class="round_left_wrap">
+          <div class="round_left"></div>
+        </div>
         <span class="tab_close"><TabClose></TabClose></span>
       </button>
     </router-link>
@@ -229,11 +232,16 @@ import Plus from "@/components/svg/Plus.vue";
       }
     }
     .gear_btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed;
-      width: 32px;
-      height: 32px;
       right: 8px;
       top: 6px;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+      }
     }
     .tab_logo {
       position: relative;
@@ -516,6 +524,7 @@ import Plus from "@/components/svg/Plus.vue";
               width: 100%;
               height: 100%;
               background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
               z-index: 1;
             }
           }
@@ -599,6 +608,7 @@ import Plus from "@/components/svg/Plus.vue";
               width: 100%;
               height: 100%;
               background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
               z-index: 1;
             }
           }

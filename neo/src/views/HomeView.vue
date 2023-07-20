@@ -101,33 +101,11 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-  .dropdown {
-    stroke: rgba(255, 255, 255, 0.5);
-  }
-  &:hover {
-    .dropdown {
-      stroke: rgba(255, 255, 255, 1);
-    }
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
 .outer {
-  background-color: #1b1c21;
+  background-color: rgba(38, 40, 49, 1);
+  @include theme() {
+    background-color: theme-get("bg-color1") !important;
+  }
   min-height: 100vh;
   .inner {
     padding: 0 11.5%;
@@ -136,6 +114,9 @@ button {
       .main_title {
         font-size: 40px;
         color: #fff;
+        @include theme() {
+          color: theme-get("text-main-title") !important;
+        }
         font-family: Pretendard;
         font-weight: bold;
       }
@@ -145,6 +126,9 @@ button {
         font-family: Pretendard;
         font-size: 24px;
         color: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          color: theme-get("text-sub-title") !important;
+        }
       }
     }
     .btn_wrap {
@@ -152,6 +136,9 @@ button {
       flex-wrap: wrap;
       margin-top: 48px;
       border-bottom: 1px solid #404457;
+      @include theme() {
+        color: theme-get("text-main-title") !important;
+      }
       padding-bottom: 48px;
 
       .home_drop_box {
@@ -204,7 +191,8 @@ button {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: $hover-bg;
+          border-radius: 24px;
           z-index: 1;
         }
         img {
@@ -222,14 +210,14 @@ button {
             display: flex;
             align-items: center;
             background-color: transparent;
-            color: #4199ff;
+            color: $color-blue;
             cursor: pointer;
             span {
               margin-right: 8px;
             }
             &:hover {
               span {
-                color: #4199ff;
+                color: $color-blue;
               }
             }
           }

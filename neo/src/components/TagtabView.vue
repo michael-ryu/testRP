@@ -31,6 +31,9 @@
         <TabSql></TabSql>
         <span>SQL</span>
         <!-- 닫기 svg -->
+        <div class="round_left_wrap">
+          <div class="round_left"></div>
+        </div>
         <span class="tab_close"><TabClose></TabClose></span>
       </button>
     </router-link>
@@ -60,14 +63,100 @@
         <Gear></Gear>
       </button>
       <div v-if="isSettingVisible" class="setting_wrap">
-        <button class="setting_btn">
+        <button @click="openPrefferenceModal" class="setting_btn">
           <Prefference></Prefference>
           <span> Preferences… </span>
         </button>
-        <button class="setting_btn">
+        <div class="backdrop" v-if="isPrefferenceModalOpen"></div>
+        <div v-if="isPrefferenceModalOpen">
+          <div class="prefference_modal_wrap">
+            <div class="prefference_modal_title">
+              <div class="prefference_img_wrap">
+                <Prefference></Prefference>
+                <span>Preferences</span>
+              </div>
+              <div>
+                <button @click="closePrefferenceModal">
+                  <TabClose></TabClose>
+                </button>
+              </div>
+            </div>
+            <div class="prefference_modal_contents_wrap">
+              <div class="prefference_modal_contents">
+                <span>UI Theme</span
+                ><button>
+                  <span>machloTchartBlack</span><Dropdown></Dropdown>
+                </button>
+              </div>
+              <div class="prefference_modal_contents">
+                <span>Font Size</span
+                ><button><span>small</span><Dropdown></Dropdown></button>
+              </div>
+            </div>
+            <div class="prefference_modal_btn_wrap">
+              <button
+                @click="closePrefferenceModal"
+                class="prefference_modal_btn blue_btn"
+              >
+                OK
+              </button>
+              <button
+                @click="closePrefferenceModal"
+                class="prefference_modal_btn"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+        <button @click="openLisenceModal" class="setting_btn">
           <License></License>
           <span> License </span>
         </button>
+        <div class="backdrop" v-if="isLisenceModalOpen"></div>
+        <div v-if="isLisenceModalOpen">
+          <div>
+            <div class="lisence_modal_wrap">
+              <div class="lisence_modal_title">
+                <div class="lisece_img_wrap">
+                  <License></License>
+                  <span>License</span>
+                </div>
+                <div>
+                  <button @click="closeLisenceModal">
+                    <TabClose></TabClose>
+                  </button>
+                </div>
+              </div>
+              <div class="lisence_modal_contents_wrap">
+                <div class="lisence_modal_contents">
+                  <span>Type</span>
+                  <span>COMMUNITY</span>
+                </div>
+                <div class="lisence_modal_contents">
+                  <span>Customer</span>
+                  <span>NONE</span>
+                </div>
+                <div class="lisence_modal_contents">
+                  <span>Country Code</span>
+                  <span>KR</span>
+                </div>
+                <div class="lisence_modal_contents">
+                  <span>Project</span>
+                  <span>NONE</span>
+                </div>
+                <div class="lisence_modal_contents">
+                  <span>Install Date</span>
+                  <span>0000-00-00 00:00:00</span>
+                </div>
+              </div>
+              <div class="lisence_modal_btn_wrap">
+                <span>Register License…</span>
+                <button @click="closeLisenceModal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <button class="setting_btn">
           <Logout></Logout>
           <span> Logout </span>
@@ -77,6 +166,7 @@
   </div>
 </template>
 <script setup>
+import Dropdown from "@/components/svg/Dropdown.vue";
 import Prefference from "@/components/svg/Prefference.vue";
 import License from "@/components/svg/License.vue";
 import Logout from "@/components/svg/Logout.vue";
@@ -142,11 +232,16 @@ import Plus from "@/components/svg/Plus.vue";
       }
     }
     .gear_btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed;
-      width: 32px;
-      height: 32px;
       right: 8px;
       top: 6px;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+      }
     }
     .tab_logo {
       position: relative;
@@ -154,6 +249,7 @@ import Plus from "@/components/svg/Plus.vue";
       justify-content: center;
       align-items: center;
       padding: 0;
+      width: 170px;
       img {
         padding: 0;
       }
@@ -288,6 +384,7 @@ import Plus from "@/components/svg/Plus.vue";
         font-family: Pretendard;
         font-size: 16px;
         font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
       }
       .setting_btn {
         color: #fff;
@@ -306,6 +403,215 @@ import Plus from "@/components/svg/Plus.vue";
               fill: #fff;
             }
           }
+          span {
+            color: rgba(255, 255, 255, 1);
+          }
+        }
+      }
+      .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(38, 40, 49, 0.5);
+        z-index: 99;
+      }
+      .prefference_modal_wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 540px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+        button {
+          svg {
+            fill: rgba(255, 255, 255, 0.5);
+            stroke: rgba(255, 255, 255, 0.5);
+            path {
+              fill: rgba(255, 255, 255, 0.5);
+            }
+          }
+          &:hover {
+            span {
+              color: rgba(255, 255, 255, 1);
+            }
+            svg {
+              fill: rgba(255, 255, 255, 1);
+              stroke: rgba(255, 255, 255, 1);
+              path {
+                fill: rgba(255, 255, 255, 1);
+              }
+            }
+          }
+        }
+        .prefference_modal_title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 25px;
+          margin-bottom: 45px;
+          svg {
+            fill: rgba(255, 255, 255, 1);
+            stroke: rgba(255, 255, 255, 1);
+          }
+          span {
+            color: rgba(255, 255, 255, 1);
+          }
+          padding: 0 30px;
+          .prefference_img_wrap {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .prefference_modal_contents {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 60px;
+          margin-bottom: 8px;
+          span {
+            font-family: Pretendard;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          button {
+            position: relative;
+            font-family: Pretendard;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            width: 260px;
+            height: 34px;
+            border: solid 0.5px rgba(255, 255, 255, 0.5);
+            background-color: rgba(38, 40, 49, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+          }
+        }
+        .prefference_modal_btn_wrap {
+          display: flex;
+          justify-content: center;
+          margin: 40px 0;
+          :first-child {
+            margin-right: 10px;
+          }
+          .prefference_modal_btn {
+            width: 120px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px #d9d9d9;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
+              z-index: 1;
+            }
+          }
+          .blue_btn {
+            background-color: #4199ff;
+          }
+        }
+      }
+      .lisence_modal_wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 540px;
+        background-color: #404457;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
+          inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
+        border: solid 0.5px rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        z-index: 999;
+        .lisence_modal_title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 25px;
+          margin-bottom: 45px;
+          .lisece_img_wrap {
+            display: flex;
+            align-items: center;
+          }
+          svg {
+            fill: rgba(255, 255, 255, 1);
+            stroke: rgba(255, 255, 255, 1);
+          }
+          span {
+            color: rgba(255, 255, 255, 1);
+          }
+          padding: 0 30px;
+        }
+        .lisence_modal_contents_wrap {
+          padding: 0 60px;
+          .lisence_modal_contents {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 23px;
+            span {
+              font-family: Pretendard;
+              font-size: 16px;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.5);
+            }
+          }
+        }
+        .lisence_modal_btn_wrap {
+          margin: 63px 0 42px 0;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 60px;
+          span {
+            font-family: Pretendard;
+            font-size: 18px;
+            color: #4199ff;
+          }
+          button {
+            width: 120px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            border: solid 0.5px #d9d9d9;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 1);
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
+              z-index: 1;
+            }
+          }
         }
       }
     }
@@ -317,9 +623,23 @@ export default {
   data() {
     return {
       isSettingVisible: false,
+      isPrefferenceModalOpen: false,
+      isLisenceModalOpen: false,
     };
   },
   methods: {
+    openPrefferenceModal() {
+      this.isPrefferenceModalOpen = true;
+    },
+    closePrefferenceModal() {
+      this.isPrefferenceModalOpen = false;
+    },
+    openLisenceModal() {
+      this.isLisenceModalOpen = true;
+    },
+    closeLisenceModal() {
+      this.isLisenceModalOpen = false;
+    },
     toggleSetting() {
       this.isSettingVisible = !this.isSettingVisible;
     },

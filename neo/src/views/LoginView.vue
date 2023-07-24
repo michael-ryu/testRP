@@ -78,13 +78,13 @@ import Twitter from "@/components/svg/Twitter.vue";
     margin-bottom: 12px;
     text-indent: 32px;
     background-color: #fcfcfc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: solid 0.5px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 8px;
   }
   input::placeholder {
-    color: #a7a7a7;
+    color: rgba(0, 0, 0, 0.2);
     font-family: Pretendard;
     font-size: 14px;
-    text-decoration: none;
   }
   .input-id {
     background-image: url(@/assets/image/login_id.png);
@@ -183,9 +183,6 @@ import Twitter from "@/components/svg/Twitter.vue";
   }
 
   .input {
-    @include theme() {
-      border: 1px solid theme-get("border-color-input");
-    }
     border-radius: 4px;
     padding: 4px 6px;
     width: 100%;
@@ -194,7 +191,6 @@ import Twitter from "@/components/svg/Twitter.vue";
     @include theme() {
       color: theme-get("text-color") !important;
     }
-    font-style: italic;
   }
 }
 .sns {

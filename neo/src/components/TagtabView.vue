@@ -242,6 +242,9 @@ import Plus from "@/components/svg/Plus.vue";
         background-color: rgba(255, 255, 255, 0.08);
         border-radius: 10px;
       }
+      svg {
+        fill: #fff !important;
+      }
     }
     .tab_logo {
       position: relative;

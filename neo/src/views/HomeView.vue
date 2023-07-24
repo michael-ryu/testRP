@@ -102,7 +102,6 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
 .outer {
-  background-color: rgba(38, 40, 49, 1);
   @include theme() {
     background-color: theme-get("bg-color1") !important;
   }
@@ -113,7 +112,6 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
       margin-top: 18vh;
       .main_title {
         font-size: 40px;
-        color: #fff;
         @include theme() {
           color: theme-get("text-main-title") !important;
         }
@@ -125,7 +123,6 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
         opacity: 0.8;
         font-family: Pretendard;
         font-size: 24px;
-        color: rgba(255, 255, 255, 0.5);
         @include theme() {
           color: theme-get("text-sub-title") !important;
         }
@@ -135,9 +132,8 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
       display: flex;
       flex-wrap: wrap;
       margin-top: 48px;
-      border-bottom: 1px solid #404457;
       @include theme() {
-        color: theme-get("text-main-title") !important;
+        border-bottom: 1px solid theme-get("modal-bg") !important;
       }
       padding-bottom: 48px;
 
@@ -153,14 +149,19 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
           border-radius: 30px;
           box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
           background-color: rgba(255, 255, 255, 0.08);
-          border: solid 2px rgba(255, 255, 255, 0.3);
-          border-style: dashed;
+          @include theme() {
+            background-color: theme-get("btn-hover-bg") !important;
+            border: solid 2px theme-get("home-drop") !important;
+            border-style: dashed !important;
+          }
         }
         p {
           font-family: Pretendard;
           font-size: 24px;
           font-weight: 500;
-          color: #fff;
+          @include theme() {
+            color: theme-get("text-main-title") !important;
+          }
           margin-top: 16px;
         }
       }
@@ -178,7 +179,9 @@ import TabTaganalyzer from "../components/svg/TabTaganalyzer.vue";
           font-family: Pretendard;
           font-size: 24px;
           font-weight: 500;
-          color: #fff;
+          @include theme() {
+            color: theme-get("text-main-title") !important;
+          }
           margin-top: 16px;
         }
       }

@@ -4,7 +4,7 @@
     width="16"
     height="16"
     viewBox="0 0 16 16"
-    style="stroke: transparent"
+    style="stroke: transparent !important"
   >
     <g transform="translate(-1579.051 -15.051)">
       <rect

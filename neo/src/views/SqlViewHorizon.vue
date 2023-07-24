@@ -31,8 +31,8 @@
             <div class="save_modal_wrap">
               <div class="save_modal_tilte">
                 <div>
-                  <Folder></Folder>
-                  <span>Open</span>
+                  <Save></Save>
+                  <span>Save</span>
                 </div>
                 <button @click="closeSaveModal"><TabClose></TabClose></button>
               </div>
@@ -155,8 +155,129 @@
             <Folder></Folder>
           </button>
           <div class="backdrop" v-if="isOpenModalOpen"></div>
-          <div class="open_modal" v-if="isOpenModalOpen">
-            <div class="open_modal_wrap"></div>
+          <div class="save_modal" v-if="isOpenModalOpen">
+            <div class="save_modal_wrap">
+              <div class="save_modal_tilte">
+                <div>
+                  <Folder></Folder>
+                  <span>Open</span>
+                </div>
+                <button @click="closeOpenModal"><TabClose></TabClose></button>
+              </div>
+              <div class="save_modal_top">
+                <div>
+                  <button class="save_modal_top_btn">
+                    <TagPrevious></TagPrevious>
+                  </button>
+                  <button class="save_modal_top_btn">
+                    <TagNext></TagNext>
+                  </button>
+                </div>
+                <button class="save_modal_top_adress_btn">
+                  <SaveHome></SaveHome>
+                  <SavePlay></SavePlay>
+                </button>
+                <button><SaveNew></SaveNew></button>
+              </div>
+              <div class="save_modal_contents">
+                <div class="save_modal_contents_title">
+                  <div class="save_modal_name">Name</div>
+                  <div class="save_modal_date">Last modified</div>
+                  <div class="save_modal_size">Size</div>
+                </div>
+                <div class="save_modal_content_wrap">
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveFile></SaveFile>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                  <div class="save_modal_content">
+                    <button>
+                      <div class="save_modal_name">
+                        <SaveSql></SaveSql>Folder
+                      </div>
+                      <div class="save_modal_date">8day ago</div>
+                      <div class="save_modal_size">3 KB</div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="save_modal_footer">
+                <button @click="closeOpenModal" class="save_modal_btn blue_btn">
+                  OK
+                </button>
+                <button @click="closeOpenModal" class="save_modal_btn last">
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="sql_left_table"></div>
@@ -292,31 +413,11 @@ import SaveNew from "@/components/svg/SaveNew.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    stroke: rgba(255, 255, 255, 0.5);
-    fill: rgba(255, 255, 255, 0.5);
-
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  &:hover {
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      stroke: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .outer {
-  background-color: #1b1c21;
+  @include theme() {
+    background-color: theme-get("bg-color1") !important;
+  }
   height: 100vh;
   .sql {
     display: flex;
@@ -324,23 +425,29 @@ button {
     height: 100%;
   }
   .sql_left {
-    background-color: #1b1c21;
+    @include theme() {
+      background-color: theme-get("sql-bg") !important;
+    }
     width: 100%;
     height: 100%;
     position: relative;
     &::after {
       content: "";
-      width: 100%;
-      height: 8px;
+      width: 5px;
+      height: 100%;
       position: absolute;
-      bottom: 0px;
+      top: 0;
       right: 0;
-      background-color: #262831;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
     }
     .sql_tab_left {
-      background-color: #262831;
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
       height: 54px;
+      // border: 1px solid #fff;
       display: flex;
       align-items: center;
       position: relative;
@@ -351,8 +458,10 @@ button {
         justify-content: space-between;
         border-radius: 10px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
-        background-color: #262831;
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+          background-color: theme-get("btn-bg") !important;
+        }
         width: 256px;
         height: 32px;
         margin-left: 20px;
@@ -367,16 +476,20 @@ button {
           font-family: Pretendard;
           font-size: 16px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
+          @include theme() {
+            color: theme-get("none-hover") !important;
+          }
         }
         .modal_arrow {
           position: absolute;
           right: 0px;
         }
+        @include hover-border;
         &:hover {
-          border: solid 0.5px rgba(255, 255, 255, 1);
           span {
-            color: rgba(255, 255, 255, 1);
+            @include theme() {
+              color: theme-get("hover-text") !important;
+            }
           }
         }
       }
@@ -390,10 +503,13 @@ button {
         left: 50%;
         transform: translate(-50%, -50%);
         width: 780px;
-        background-color: #404457;
+        @include theme() {
+          background-color: theme-get("modal-bg") !important;
+          border: solid 0.5px theme-get("none-hover") !important;
+        }
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
           inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
+
         border-radius: 10px;
         z-index: 999;
         .save_modal_wrap {
@@ -403,11 +519,15 @@ button {
             align-items: center;
             padding: 24px 30px 28px 26px;
             svg {
-              fill: rgba(255, 255, 255, 1);
-              stroke: rgba(255, 255, 255, 1);
+              @include theme() {
+                fill: theme-get("text-main-title") !important;
+                stroke: theme-get("text-main-title");
+              }
             }
             span {
-              color: rgba(255, 255, 255, 1);
+              @include theme() {
+                color: theme-get("text-main-title") !important;
+              }
             }
             div {
               display: flex;
@@ -431,25 +551,42 @@ button {
               height: 34px;
               border-radius: 8px;
               box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
+              @include theme() {
+                border: solid 0.5px theme-get("none-hover") !important;
+                background-color: theme-get("modal-btn-bg") !important ;
+              }
               display: flex;
               align-items: center;
               padding-left: 10px;
+              &:hover {
+                @include theme() {
+                  border: solid 0.5px theme-get("text-main-title") !important;
+                }
+              }
             }
           }
           .save_modal_contents {
             height: 300px;
             width: calc(100% - 1px);
-            border: solid 0.5px #9c9da6;
-            background-color: rgba(38, 40, 49, 0.5);
+            @include theme() {
+              background-color: theme-get("modal-contents-bg") !important ;
+              border: solid 0.5px theme-get("none-hover") !important ;
+            }
+            svg {
+              @include theme() {
+                fill: theme-get("text-main-title") !important;
+                stroke: theme-get("text-main-title");
+              }
+            }
             .save_modal_contents_title {
               display: flex;
               font-family: Pretendard;
               font-size: 12px;
               font-weight: 500;
-              color: rgba(255, 255, 255, 0.5);
-              border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+              @include theme() {
+                color: theme-get("none-hover") !important ;
+                border-bottom: 0.5px solid theme-get("none-hover") !important ;
+              }
               padding: 4px 0;
               .save_modal_name {
                 width: 47%;
@@ -468,7 +605,9 @@ button {
                 font-family: Pretendard;
                 font-size: 16px;
                 font-weight: 500;
-                color: #fff;
+                @include theme() {
+                  color: theme-get("text-main-title") !important;
+                }
                 .save_modal_name {
                   width: 47%;
                   margin-left: 24px;
@@ -511,7 +650,9 @@ button {
               box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
               border: solid 0.5px #d9d9d9;
               background-color: rgba(255, 255, 255, 0.2);
-              color: rgba(255, 255, 255, 1);
+              @include theme() {
+                color: theme-get("text-main-title") !important;
+              }
               margin-right: 8px;
               position: relative;
 
@@ -543,7 +684,9 @@ button {
     }
   }
   .sql_right {
-    background-color: #1b1c21;
+    @include theme() {
+      background-color: theme-get("sql-bg") !important;
+    }
     width: 100%;
     height: 100%;
     position: relative;
@@ -551,20 +694,12 @@ button {
     .sql_tab_right {
       height: 54px;
       padding-left: 16px;
-      background-color: #262831;
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
       display: flex;
       align-items: center;
       position: relative;
-      button {
-        svg {
-          fill: rgba(255, 255, 255, 0.5);
-        }
-        &:hover {
-          svg {
-            fill: rgba(255, 255, 255, 1);
-          }
-        }
-      }
       .sql_vertical {
         position: absolute;
         top: 6px;
@@ -582,9 +717,13 @@ button {
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.2);
+        @include theme() {
+          background-color: theme-get("sql-select-btn") !important;
+        }
         svg {
-          fill: rgba(255, 255, 255, 1);
+          @include theme() {
+            fill: theme-get("text-main-title") !important;
+          }
         }
       }
       .sql_right_tab_btn {
@@ -600,13 +739,13 @@ button {
         }
         &:hover {
           svg {
-            fill: #fdb532;
+            fill: #fdb532 !important;
             path {
-              fill: #fdb532;
+              fill: #fdb532 !important;
             }
           }
           span {
-            color: #fdb532;
+            color: #fdb532 !important;
           }
         }
       }
@@ -614,7 +753,9 @@ button {
     .sql_tab_select {
       border-top-right-radius: 10px;
       border-top-left-radius: 10px;
-      background-color: #101010;
+      @include theme() {
+        background-color: theme-get("sql-select") !important;
+      }
       position: relative;
       font-family: Pretendard;
       font-size: 18px;
@@ -629,7 +770,9 @@ button {
       .sql_round_right_wrap {
         width: 15px;
         height: 15px;
-        background-color: #101010;
+        @include theme() {
+          background-color: theme-get("sql-select") !important;
+        }
         position: absolute;
         bottom: 0;
         left: -15px;
@@ -639,7 +782,9 @@ button {
           width: 15px;
           height: 15px;
           border-radius: 0 0 80% 0;
-          background-color: #262831;
+          @include theme() {
+            background-color: theme-get("sql-select-btn-bg") !important;
+          }
           position: absolute;
           bottom: 0;
           left: 0px;
@@ -649,7 +794,9 @@ button {
       .sql_round_left_wrap {
         width: 15px;
         height: 15px;
-        background-color: #101010;
+        @include theme() {
+          background-color: theme-get("sql-select") !important;
+        }
         position: absolute;
         bottom: 0;
         right: -15px;
@@ -660,7 +807,9 @@ button {
           width: 15px;
           height: 15px;
           border-radius: 0 0 0 80%;
-          background-color: #262831;
+          @include theme() {
+            background-color: theme-get("sql-select-btn-bg") !important;
+          }
           position: absolute;
           bottom: 0;
           right: 0;
@@ -671,9 +820,13 @@ button {
       font-family: Pretendard;
       font-size: 18px;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.5);
+      @include theme() {
+        color: theme-get("none-hover") !important;
+      }
       svg {
-        fill: #262831;
+        @include theme() {
+          fill: theme-get("none-hover") !important;
+        }
       }
     }
   }
@@ -693,13 +846,17 @@ button {
         td {
           padding-left: 36px;
           font-family: D2Coding;
-          color: #fff;
+          @include theme() {
+            color: theme-get("text-main-title") !important;
+          }
           font-size: 16px;
           height: 24px;
         }
       }
       .back_gray {
-        background-color: rgba(255, 255, 255, 0.04);
+        @include theme() {
+          background-color: theme-get("sql-contents-bg") !important;
+        }
       }
     }
   }

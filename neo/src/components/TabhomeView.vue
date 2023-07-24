@@ -238,6 +238,9 @@ import Plus from "@/components/svg/Plus.vue";
       position: fixed;
       right: 8px;
       top: 6px;
+      svg {
+        fill: #fff !important;
+      }
       &:hover {
         background-color: rgba(255, 255, 255, 0.08);
         border-radius: 10px;

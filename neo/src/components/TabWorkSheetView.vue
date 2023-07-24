@@ -8,11 +8,12 @@
     </router-link>
     <!-- 홈모양 svg -->
     <router-link to="/home">
-      <button class="tab_button tab_none_select">
+      <button class="tab_button tab_select">
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
         <TabHome></TabHome>
+
         <span>Welcome</span>
         <!-- 닫기 svg -->
         <span class="tab_close"><TabClose></TabClose></span>
@@ -21,27 +22,30 @@
         </div>
       </button>
     </router-link>
-    <router-link to="/shell">
+    <router-link to="/sql">
       <button class="tab_button tab_none_select">
         <!-- sql svg -->
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
         <TabSql></TabSql>
-        <span>Shell</span>
+        <span>SQL</span>
         <!-- 닫기 svg -->
+        <div class="round_left_wrap">
+          <div class="round_left"></div>
+        </div>
         <span class="tab_close"><TabClose></TabClose></span>
       </button>
     </router-link>
-    <router-link to="/work">
-      <button class="tab_button tab_select">
+    <router-link to="/tag">
+      <button class="tab_button tab_none_select">
         <!-- tag anlyzer svg -->
         <div class="round_right_wrap">
           <div class="round_right"></div>
         </div>
         <TabTaganalyzer></TabTaganalyzer>
 
-        <span>Worksheet</span>
+        <span>Tag Anlyzer</span>
         <!-- 닫기 svg -->
         <span class="tab_close"><TabClose></TabClose></span>
         <div class="round_left_wrap">
@@ -67,7 +71,7 @@
         <div v-if="isPrefferenceModalOpen">
           <div class="prefference_modal_wrap">
             <div class="prefference_modal_title">
-              <div>
+              <div class="prefference_img_wrap">
                 <Prefference></Prefference>
                 <span>Preferences</span>
               </div>
@@ -92,7 +96,7 @@
             <div class="prefference_modal_btn_wrap">
               <button
                 @click="closePrefferenceModal"
-                class="prefference_modal_btn"
+                class="prefference_modal_btn blue_btn"
               >
                 OK
               </button>
@@ -114,7 +118,7 @@
           <div>
             <div class="lisence_modal_wrap">
               <div class="lisence_modal_title">
-                <div>
+                <div class="lisece_img_wrap">
                   <License></License>
                   <span>License</span>
                 </div>
@@ -228,11 +232,19 @@ import Plus from "@/components/svg/Plus.vue";
       }
     }
     .gear_btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed;
-      width: 32px;
-      height: 32px;
       right: 8px;
       top: 6px;
+      svg {
+        fill: #fff !important;
+      }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+      }
     }
     .tab_logo {
       position: relative;
@@ -240,6 +252,7 @@ import Plus from "@/components/svg/Plus.vue";
       justify-content: center;
       align-items: center;
       padding: 0;
+      width: 170px;
       img {
         padding: 0;
       }
@@ -454,6 +467,10 @@ import Plus from "@/components/svg/Plus.vue";
             color: rgba(255, 255, 255, 1);
           }
           padding: 0 30px;
+          .prefference_img_wrap {
+            display: flex;
+            align-items: center;
+          }
         }
         .prefference_modal_contents {
           display: flex;
@@ -500,9 +517,22 @@ import Plus from "@/components/svg/Plus.vue";
             border: solid 0.5px #d9d9d9;
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
-            &:hover {
-              background-color: #4199ff;
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
+              z-index: 1;
             }
+          }
+          .blue_btn {
+            background-color: #4199ff;
           }
         }
       }
@@ -524,6 +554,10 @@ import Plus from "@/components/svg/Plus.vue";
           justify-content: space-between;
           margin-top: 25px;
           margin-bottom: 45px;
+          .lisece_img_wrap {
+            display: flex;
+            align-items: center;
+          }
           svg {
             fill: rgba(255, 255, 255, 1);
             stroke: rgba(255, 255, 255, 1);
@@ -567,8 +601,18 @@ import Plus from "@/components/svg/Plus.vue";
             border: solid 0.5px #d9d9d9;
             background-color: rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 1);
-            &:hover {
-              background-color: #4199ff;
+            position: relative;
+
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 8px;
+              z-index: 1;
             }
           }
         }

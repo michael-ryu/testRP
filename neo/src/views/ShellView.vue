@@ -13,13 +13,17 @@ import TabShell from "@/components/TabShellView.vue";
 @import "@/assets/scss/theme.scss";
 
 .outer {
-  background-color: #1b1c21;
+  @include theme() {
+    background-color: theme-get("taganlyzer-bg") !important;
+  }
   min-height: 100vh;
   .shell_tab {
     height: 54px;
     display: flex;
     align-items: center;
-    background-color: #262831;
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
   }
   .shell_wrap {
     margin-top: 15px;

@@ -111,39 +111,19 @@ import TabDropdown from "@/components/svg/TabDropdown.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-    stroke: rgba(255, 255, 255, 0.5);
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-  .dropdown {
-    stroke: rgba(255, 255, 255, 0.5);
-  }
-  &:hover {
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      stroke: rgba(255, 255, 255, 1);
-      fill: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .outer {
-  background-color: #1b1c21;
+  @include theme() {
+    background-color: theme-get("taganlyzer-bg") !important;
+  }
   min-height: 100vh;
-  overflow: scroll;
   .worksheet_tab {
     height: 54px;
     display: flex;
     align-items: center;
-    background-color: #262831;
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
     .doubleplay_btn {
       margin: 0 16px;
       position: relative;
@@ -151,7 +131,9 @@ button {
         content: "";
         width: 1px;
         height: 24px;
-        background-color: rgba(255, 255, 255, 0.2);
+        @include theme() {
+          background-color: theme-get("worksheet-bar") !important;
+        }
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -164,7 +146,10 @@ button {
   }
   .worksheet_contents_wrap {
     margin-top: 80px;
-    height: 1000px;
+    margin-bottom: 200px;
+    // @include theme() {
+    //   background-color: theme-get("sql-bg") !important;
+    // }
     .worksheet_contents {
       display: flex;
       align-items: center;
@@ -175,13 +160,17 @@ button {
         margin-bottom: 40px;
         border-radius: 10px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
-        background-color: rgba(38, 40, 49, 0.5);
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+          background-color: theme-get("worksheet-box-bg") !important;
+        }
         position: relative;
         p {
           font-family: D2Coding;
           font-size: 18px;
-          color: rgba(255, 255, 255, 1);
+          @include theme() {
+            color: theme-get("hover-text") !important;
+          }
           text-align: left;
           margin: 24px;
           .red {
@@ -204,7 +193,9 @@ button {
           top: 12px;
           left: -32px;
           svg {
-            fill: rgba(255, 255, 255, 0.5);
+            @include theme() {
+              fill: theme-get("none-hover") !important;
+            }
           }
         }
         .worksheet_btn_wrap {
@@ -219,7 +210,9 @@ button {
             margin-right: 8px;
             &::after {
               content: "";
-              background-color: rgba(255, 255, 255, 0.5);
+              @include theme() {
+                background-color: theme-get("worksheet-bar") !important;
+              }
               width: 1px;
               height: 24px;
               position: absolute;
@@ -251,11 +244,13 @@ button {
             width: 32px;
             height: 32px;
             border-radius: 8px;
-            border: solid 0.5px rgba(255, 255, 255, 0.5);
-            background-color: rgba(38, 40, 49, 0.5);
+            @include theme() {
+              border: solid 0.5px theme-get("none-hover") !important;
+            }
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-left: 5px;
           }
         }
       }
@@ -273,7 +268,9 @@ button {
       .lorem_text {
         font-family: Pretendard;
         font-size: 18px;
-        color: #fff;
+        @include theme() {
+          color: theme-get("hover-text") !important;
+        }
         margin-bottom: 40px;
       }
     }
@@ -283,7 +280,10 @@ button {
       border-radius: 10px;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
       border: solid 0.5px rgba(255, 255, 255, 0.5);
-      background-color: rgba(38, 40, 49, 0.5);
+      @include theme() {
+        border: solid 0.5px theme-get("none-hover") !important;
+        background-color: theme-get("worksheet-box-bg") !important;
+      }
       position: relative;
       margin: 0 auto;
       .worksheet_box_fold {
@@ -292,8 +292,9 @@ button {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
+          @include theme() {
+            border: solid 0.5px theme-get("none-hover") !important;
+          }
           display: flex;
           align-items: center;
           justify-content: center;
@@ -306,8 +307,8 @@ button {
         position: absolute;
         top: 12px;
         left: -32px;
-        svg {
-          fill: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          fill: theme-get("none-hover") !important;
         }
       }
       &:hover {

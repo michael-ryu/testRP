@@ -158,7 +158,7 @@
         </div>
         <div class="tag_modal_footer">
           <button class="tag_modal_footer_btn blue_btn">OK</button>
-          <button class="tag_modal_footer_btn last">Cancel</button>
+          <button class="tag_modal_footer_btn gray_btn last">Cancel</button>
         </div>
       </div>
     </div>
@@ -197,37 +197,19 @@ import Tab from "../components/TabView.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-    stroke: rgba(255, 255, 255, 0.5);
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  &:hover {
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      stroke: rgba(255, 255, 255, 1);
-      fill: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .outer {
-  background-color: #1b1c21;
+  @include theme() {
+    background-color: theme-get("taganlyzer-bg") !important;
+  }
   min-height: 100vh;
   .tag_tab {
     height: 54px;
     display: flex;
     align-items: center;
-    background-color: #262831;
-
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
     .backdrop {
       position: fixed;
       top: 0;
@@ -244,8 +226,11 @@ button {
       justify-content: space-between;
       border-radius: 10px;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-      border: solid 0.5px rgba(255, 255, 255, 0.5);
-      background-color: #262831;
+      @include theme() {
+        border: solid 0.5px theme-get("none-hover") !important;
+        background-color: theme-get("btn-bg") !important ;
+      }
+
       width: 360px;
       height: 32px;
       margin-left: 20px;
@@ -256,18 +241,14 @@ button {
       }
       svg {
         margin-right: 8px;
-        path {
-          fill: rgba(255, 255, 255, 0.5);
-        }
-        .modal_arrow_icon {
-          stroke: rgba(255, 255, 255, 0.5);
-        }
       }
       span {
         font-family: Pretendard;
         font-size: 16px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          color: theme-get("none-hover") !important;
+        }
       }
       .modal_arrow {
         position: absolute;
@@ -280,14 +261,20 @@ button {
         border: solid 0.5px rgba(255, 255, 255, 1);
         svg {
           path {
-            fill: rgba(255, 255, 255, 1);
+            @include theme() {
+              fill: theme-get("hover-text") !important;
+            }
           }
           .modal_arrow_icon {
-            stroke: rgba(255, 255, 255, 1);
+            @include theme() {
+              stroke: theme-get("hover-text") !important;
+            }
           }
         }
         span {
-          color: rgba(255, 255, 255, 1);
+          @include theme() {
+            color: theme-get("hover-text") !important;
+          }
         }
       }
     }
@@ -298,7 +285,9 @@ button {
         content: "";
         width: 1px;
         height: 24px;
-        background-color: rgba(255, 255, 255, 0.2);
+        @include theme() {
+          background-color: theme-get("after-bar") !important ;
+        }
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -312,7 +301,9 @@ button {
   }
   .tag_table_wrap {
     width: calc(100% - 80px);
-    background-color: #262831;
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
     margin: 0 auto;
     margin-top: 40px;
     border-radius: 10px;
@@ -322,20 +313,7 @@ button {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
+
       .tag_chart_index {
         display: flex;
         align-items: center;
@@ -345,7 +323,10 @@ button {
         font-family: Pretendard;
         font-size: 18px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
+
+        @include theme() {
+          color: theme-get("none-hover") !important;
+        }
       }
     }
     .tag_table {
@@ -356,19 +337,20 @@ button {
       margin: 16px 16px 0 16px;
       button {
         svg {
-          fill: none;
-          stroke: #707070;
-          stroke-width: 0.5px;
-          path {
-            fill: rgba(255, 255, 255, 0.5);
+          @include theme() {
+            stroke: theme-get("none-hover") !important;
+            stroke-width: 0.5px;
           }
         }
         &:hover {
           svg {
-            stroke: rgba(255, 255, 255, 1);
-
+            @include theme() {
+              stroke: theme-get("hover-text") !important;
+            }
             path {
-              fill: rgba(255, 255, 255, 1);
+              @include theme() {
+                fill: theme-get("hover-text") !important;
+              }
             }
           }
         }
@@ -385,29 +367,19 @@ button {
       height: 48px;
       margin: 0 auto;
       border-radius: 8px;
-      border: solid 0.5px #707070;
+      @include theme() {
+        border: solid 0.5px theme-get("none-hover") !important;
+      }
       display: flex;
       padding: 0 16px;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 15px;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
     }
     .tag_bar_wrap {
-      border-top: 1px solid #101010;
+      @include theme() {
+        border-top: 1px solid theme-get("taganlyzer-bg") !important;
+      }
       padding: 30px 6.5%;
       .tag_chart_bar {
         width: 100%;
@@ -419,8 +391,10 @@ button {
     width: calc(100% - 80px);
     margin: 0 auto;
     border-radius: 10px;
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
-    background-color: #262831;
+    @include theme() {
+      border: solid 0.5px theme-get("none-hover") !important;
+      background-color: theme-get("bg-color1") !important;
+    }
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -428,9 +402,21 @@ button {
     div {
       margin-top: 10px;
     }
-    &:hover {
-      border: solid 0.5px rgba(255, 255, 255, 1);
-      opacity: 0.8;
+    position: relative;
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      z-index: 1;
+      @include theme() {
+        border: solid 0.5px theme-get("hover-text") !important;
+      }
     }
   }
   .tag_modal {
@@ -439,14 +425,18 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 780px;
-    background-color: #404457;
+    @include theme() {
+      background-color: theme-get("modal-bg") !important;
+      border: solid 0.5px theme-get("none-hover") !important;
+    }
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
       inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     z-index: 999;
     .tag_modal_title {
-      color: rgba(255, 255, 255, 1);
+      @include theme() {
+        color: theme-get("text-main-title") !important;
+      }
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -460,31 +450,29 @@ button {
         }
       }
       svg {
-        fill: rgba(255, 255, 255, 1);
-        stroke: rgba(255, 255, 255, 1);
+        @include theme() {
+          fill: theme-get("text-main-title") !important;
+          stroke: theme-get("text-main-title") !important;
+        }
       }
     }
 
     .tag_modal_contents_wrap {
       margin-top: 70px;
-
       .tag_modal_contents {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 46px;
         margin-right: 80px;
-        svg {
-          fill: rgba(255, 255, 255, 0.5);
-          path {
-            stroke: rgba(255, 255, 255, 0.5);
-          }
-        }
+
         span {
           font-family: Pretendard;
           font-size: 16px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
+          @include theme() {
+            color: theme-get("none-hover") !important;
+          }
         }
 
         .tag_modal_table_btn {
@@ -497,11 +485,17 @@ button {
           color: rgba(255, 255, 255, 0.5);
           border-radius: 8px;
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
+          @include theme() {
+            color: theme-get("none-hover") !important;
+            border: solid 0.5px theme-get("none-hover") !important;
+            background-color: theme-get("modal-contents-bg") !important;
+          }
 
           &:hover {
-            color: rgba(255, 255, 255, 1);
+            @include theme() {
+              color: theme-get("hover-text") !important;
+              border: solid 0.5px theme-get("hover-text") !important;
+            }
           }
         }
       }
@@ -524,23 +518,27 @@ button {
           height: 34px;
           border-radius: 8px;
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
-          color: rgba(255, 255, 255, 0.5);
+          @include theme() {
+            color: theme-get("none-hover") !important;
+            border: solid 0.5px theme-get("none-hover") !important;
+            background-color: theme-get("modal-contents-bg") !important;
+          }
           display: flex;
           justify-content: space-between;
           align-items: center;
           padding: 0 10px;
           margin-right: 8px;
           &:hover {
-            border: solid 0.5px rgba(255, 255, 255, 1);
-            color: rgba(255, 255, 255, 1);
-            svg {
-              stroke: rgba(255, 255, 255, 1);
+            @include theme() {
+              color: theme-get("hover-text") !important;
+              border: solid 0.5px theme-get("hover-text") !important;
             }
-          }
-          svg {
-            stroke: rgba(255, 255, 255, 0.5);
+
+            svg {
+              @include theme() {
+                stroke: theme-get("hover-text") !important;
+              }
+            }
           }
         }
         .tag_modal_tag_serch_btn {
@@ -549,8 +547,23 @@ button {
           border-radius: 8px;
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
           border: solid 0.5px #4199ff;
-          background-color: rgba(38, 40, 49, 0.5);
+          @include theme() {
+            background-color: theme-get("modal-contents-bg") !important;
+          }
           color: #4199ff;
+          position: relative;
+
+          &:hover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1;
+          }
         }
       }
       .tag_modal_chart_wrap {
@@ -563,8 +576,11 @@ button {
           height: 100px;
           margin-right: 9px;
           border-radius: 8px;
+          @include theme() {
+            border: solid 0.5px theme-get("none-hover") !important;
+            background-color: theme-get("modal-contents-bg") !important;
+          }
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
           background-color: rgba(38, 40, 49, 0.5);
           &:hover {
             box-shadow: inset 0 -2px 62px 0 rgba(65, 153, 255, 0.5);
@@ -588,13 +604,14 @@ button {
           width: 258px;
           height: 300px;
           border-radius: 8px;
-          border: solid 0.5px rgba(255, 255, 255, 0.5);
-          background-color: rgba(38, 40, 49, 0.5);
+          @include theme() {
+            color: theme-get("hover-text") !important;
+            border: solid 0.5px theme-get("none-hover") !important;
+            background-color: theme-get("modal-contents-bg") !important;
+          }
           margin-right: 8px;
           font-family: Pretendard;
-          font-size: 16px;
           font-weight: 500;
-          color: #fff;
           padding: 12px 0px;
           div {
             display: flex;
@@ -605,20 +622,25 @@ button {
           .tag_modal_data_btn {
             width: 96px;
             height: 32px;
+            @include theme() {
+              color: theme-get("none-hover") !important;
+              border: solid 0.5px theme-get("none-hover") !important;
+              background-color: theme-get("modal-contents-bg") !important;
+            }
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-            border: solid 0.5px rgba(255, 255, 255, 0.5);
-            background-color: #404457;
             border-radius: 8px;
             font-family: Pretendard;
             font-size: 14px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 8px;
             &:hover {
-              color: #fff;
+              @include theme() {
+                color: theme-get("hover-text") !important;
+                border: solid 0.5px theme-get("hover-text") !important;
+              }
             }
           }
           p {
@@ -627,7 +649,9 @@ button {
             font-family: Pretendard;
             font-size: 16px;
             font-weight: 500;
-            color: #fff;
+            @include theme() {
+              color: theme-get("hover-text") !important;
+            }
             cursor: pointer;
             padding: 0 16px;
           }
@@ -669,9 +693,8 @@ button {
         height: 40px;
         border-radius: 8px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
         border: solid 0.5px #d9d9d9;
-        background-color: rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 1);
         margin-right: 8px;
         position: relative;
 
@@ -688,7 +711,14 @@ button {
         }
       }
       .blue_btn {
-        background-color: #4199ff;
+        background-color: #4199ff !important;
+        color: #fff;
+      }
+      .gray_btn {
+        @include theme() {
+          background-color: theme-get("modal-gray-btn") !important;
+          color: theme-get("modal-gray-text") !important;
+        }
       }
       .last {
         margin-right: 0;

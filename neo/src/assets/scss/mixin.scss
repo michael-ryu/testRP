@@ -3,6 +3,7 @@ $themes: (
     "none-hover": $d-none-hover,
     "bg-color": $d-background,
     "bg-color1": $d-background,
+    "bg-color2": $d-background,
     "btn-hover-bg": $d-btn-hover-bg,
     "none-hover-text": $d-none-hover,
     "hover-text": $d-hover,
@@ -10,18 +11,56 @@ $themes: (
     "text-sub-title": $d-text-sub-title,
     "btn-bg": $l-text-main-title,
     "modal-bg": $d-tab-bg,
+    "modal-btn-bg": $d-tab-bg,
+    "modal-btn-bg1": $d-modal-btn-hover,
+    "modal-contents-bg": $l-none-hover,
+    "modal-contents-bg1": $d-modal-contents-bg1,
+    "modal-gray-btn": $d-modal-gray-btn,
+    "modal-gray-text": $d-modal-gray-text,
+    "home-drop": $d-home-drop-bg,
+    "after-bar": $d-sql-select-btn,
+    "sql-bg": $d-sql-bg,
+    "sql-select": $d-sql-select,
+    "sql-select-btn": $d-sql-select-btn,
+    "sql-select-btn-bg": $l-text-main-title,
+    "sql-contents-bg": $d-sql-contents-bg,
+    "taganlyzer-bg": $d-sql-bg,
+    "worksheet-box-bg": $l-modal-gray-text,
+    "worksheet-bar": $d-work-sheet-bar,
+    "zoom-wrap": $d-zoom-wrap,
+    "cancel-btn-text": $l-background,
   ),
   light: (
+    "none-hover": $l-none-hover,
     "text-color": $text-b,
     "bg-color": $l-background,
     "bg-color1": $l-background1,
+    "bg-color2": $l-modal-bg,
     "none-hover-text": $l-none-hover,
     "hover-text": $l-hover,
     "btn-hover-bg": $l-btn-hover-bg,
     "text-main-title": $l-text-main-title,
     "text-sub-title": $l-text-sub-title,
     "btn-bg": $l-btn-bg,
-    "modal-bg": $l-none-hover,
+    "modal-bg": $l-modal-bg,
+    "modal-btn-bg": $d-hover,
+    "modal-btn-bg1": $l-modal-btn-hover,
+    "modal-contents-bg": $d-none-hover,
+    "modal-contents-bg1": $l-modal-contents-bg1,
+    "modal-gray-btn": $l-modal-gray-btn,
+    "modal-gray-text": $l-modal-gray-text,
+    "home-drop": $l-home-drop-bg,
+    "after-bar": $d-sql-select-btn,
+    "sql-bg": $l-sql-bg,
+    "sql-select": $l-sql-select,
+    "sql-select-btn": $l-sql-select-btn,
+    "sql-select-btn-bg": $l-background,
+    "sql-contents-bg": $l-sql-contents-bg,
+    "taganlyzer-bg": $l-modal-btn-hover,
+    "worksheet-box-bg": $l-btn-bg,
+    "worksheet-bar": $l-work-sheet-bar,
+    "zoom-wrap": $l-zoom-wrap,
+    "cancel-btn-text": $l-none-hover,
   ),
 );
 
@@ -49,23 +88,29 @@ $themes: (
 @mixin button-reset {
   button {
     svg {
-      stroke: rgba(255, 255, 255, 0.5);
-      fill: rgba(255, 255, 255, 0.5);
+      @include theme() {
+        stroke: theme-get("none-hover");
+        fill: theme-get("none-hover") !important;
+      }
 
       path {
-        fill: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          fill: theme-get("none-hover") !important;
+        }
       }
     }
 
     &:hover {
-      span {
-        color: rgba(255, 255, 255, 1);
-      }
       svg {
-        fill: rgba(255, 255, 255, 1);
-        stroke: rgba(255, 255, 255, 1);
+        @include theme() {
+          stroke: theme-get("hover-text");
+          fill: theme-get("hover-text") !important;
+        }
+
         path {
-          fill: rgba(255, 255, 255, 1);
+          @include theme() {
+            fill: theme-get("hover-text") !important;
+          }
         }
       }
     }

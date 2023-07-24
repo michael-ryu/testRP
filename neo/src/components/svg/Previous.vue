@@ -21,14 +21,7 @@
         <feComposite in="SourceGraphic" />
       </filter>
     </defs>
-    <g
-      data-name="사각형 1017"
-      style="
-        fill: transparent;
-        stroke: rgba(255, 255, 255, 0.5);
-        stroke-width: 0.5px;
-      "
-    >
+    <g data-name="사각형 1017" style="fill: transparent; stroke-width: 0.5px">
       <rect width="56" height="56" rx="8" style="stroke: none" />
       <rect
         x=".25"
@@ -44,7 +37,6 @@
         data-name="합치기 10"
         d="M.42 20.712a1.435 1.435 0 0 1 0-2.029l8.117-8.117L.42 2.449A1.434 1.434 0 0 1 2.449.42l9.131 9.131a1.437 1.437 0 0 1 0 2.03l-9.13 9.131a1.435 1.435 0 0 1-2.03 0z"
         transform="rotate(180 16.5 19.285)"
-        style="fill: rgba(255, 255, 255, 0.5)"
       />
     </g>
   </svg>

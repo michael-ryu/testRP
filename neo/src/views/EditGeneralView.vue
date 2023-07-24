@@ -175,39 +175,20 @@ import Next from "@/components/svg/Next.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-    stroke: rgba(255, 255, 255, 0.5);
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  &:hover {
-    .dropdown {
-      stroke: rgba(255, 255, 255, 1);
-    }
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      stroke: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .outer {
-  background-color: #404457;
+  @include theme() {
+    background-color: theme-get("modal-bg") !important;
+  }
   min-height: 100vh;
   .edit_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgba(255, 255, 255, 1);
+    @include theme() {
+      color: theme-get("hover-text") !important;
+    }
+
     padding: 26px 24px;
     div {
       display: flex;
@@ -215,8 +196,10 @@ button {
       align-items: center;
     }
     svg {
-      fill: rgba(255, 255, 255, 1);
-      stroke: rgba(255, 255, 255, 1);
+      @include theme() {
+        fill: theme-get("hover-text") !important;
+        stroke: theme-get("hover-text") !important;
+      }
     }
     span {
       margin-left: 6px;
@@ -225,6 +208,9 @@ button {
   .tag_table_wrap {
     width: calc(100% - 80px);
     background-color: #262831;
+    @include theme() {
+      background-color: theme-get("bg-color1") !important;
+    }
     margin: 0 auto;
     border-radius: 10px;
     .tag_table_subtab {
@@ -233,20 +219,7 @@ button {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
+
       .tag_chart_index {
         display: flex;
         align-items: center;
@@ -256,7 +229,9 @@ button {
         font-family: Pretendard;
         font-size: 18px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          color: theme-get("none-hover") !important;
+        }
       }
     }
     .tag_table {
@@ -267,21 +242,7 @@ button {
       margin: 16px 16px 0 16px;
       button {
         svg {
-          fill: none;
-          stroke: #707070;
           stroke-width: 0.5px;
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            stroke: rgba(255, 255, 255, 1);
-
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
         }
       }
       .tag_chart_img_wrap {
@@ -296,26 +257,15 @@ button {
       height: 48px;
       margin: 0 auto;
       border-radius: 8px;
-      border: solid 0.5px #707070;
+      border: #707070;
+      @include theme() {
+        border: solid 0.5px theme-get("zoom-wrap") !important;
+      }
       display: flex;
       padding: 0 16px;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 15px;
-      button {
-        svg {
-          path {
-            fill: rgba(255, 255, 255, 0.5);
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: rgba(255, 255, 255, 1);
-            }
-          }
-        }
-      }
     }
     .tag_bar_wrap {
       border-top: 1px solid #101010;
@@ -333,7 +283,9 @@ button {
       display: flex;
       align-items: center;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      @include theme() {
+        border-bottom: 1px solid theme-get("none-hover") !important;
+      }
       .edit_tab_btn {
         width: 160px;
         height: 34px;
@@ -343,15 +295,21 @@ button {
         font-family: Pretendard;
         font-size: 18px;
         font-weight: 500;
-        color: #fff;
+        @include theme() {
+          color: theme-get("hover-text") !important;
+        }
         &:hover {
-          background-color: rgba(247, 247, 248, 0.08);
-          color: #fdb532;
+          @include theme() {
+            background-color: theme-get("btn-hover-bg") !important;
+            color: #fdb532 !important;
+          }
         }
       }
       .edit_tab_select {
-        background-color: rgba(247, 247, 248, 0.08);
-        color: #fdb532;
+        @include theme() {
+          background-color: theme-get("btn-hover-bg") !important;
+          color: #fdb532 !important;
+        }
       }
     }
     .edit_general_contents {
@@ -368,13 +326,16 @@ button {
             font-family: Pretendard;
             font-size: 16px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
+            @include theme() {
+              color: theme-get("none-hover") !important;
+            }
           }
           .edit_general_content_input {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 425px;
+
             .relative_span {
               position: relative;
               .absolute_span {
@@ -389,8 +350,11 @@ button {
               height: 34px;
               border-radius: 6px;
               box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
+              @include theme() {
+                color: theme-get("hover-text") !important;
+                background-color: theme-get("worksheet-box-bg") !important;
+                border: solid 0.5px theme-get("none-hover") !important;
+              }
               margin-right: 4px;
             }
           }
@@ -406,7 +370,9 @@ button {
     justify-content: center;
     align-items: center;
     padding: 30px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    @include theme() {
+      border-top: solid 1px theme-get("none-hover") !important;
+    }
     .edit_btn {
       width: 120px;
       height: 40px;
@@ -440,6 +406,9 @@ button {
     .gray {
       background-color: rgba(255, 255, 255, 0.5);
       margin-right: 0;
+      @include theme() {
+        color: theme-get("cancel-btn-text") !important;
+      }
     }
   }
 }

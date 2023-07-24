@@ -18,7 +18,7 @@
             <span>From</span>
           </div>
           <div>
-            <button class="togglediv" @click="toggleDiv1">
+            <button class="date_from_modal_btn" @click="toggleDiv1">
               <div>
                 <Date></Date>
                 <span>now-5m</span>
@@ -153,7 +153,7 @@
             <span>To</span>
           </div>
           <div>
-            <button class="togglediv" @click="toggleDiv2">
+            <button class="date_from_modal_btn" @click="toggleDiv2">
               <div>
                 <Date></Date>
                 <span>now</span>
@@ -288,7 +288,7 @@
             <span>Refreshing Every</span>
           </div>
           <div>
-            <button class="togglediv">
+            <button class="date_from_modal_btn">
               <div>
                 <DateRefresh></DateRefresh>
                 <span>off</span>
@@ -329,7 +329,7 @@
       </div>
       <div class="date_modal_apply_wrap">
         <button class="blue_btn">Apply</button>
-        <button @click="closeModal">Cancel</button>
+        <button class="gray_btn" @click="closeModal">Cancel</button>
       </div>
     </div>
   </div>
@@ -354,38 +354,16 @@ import DateRefresh from "@/components/svg/DateRefresh.vue";
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/theme.scss";
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-    path {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-  }
-  .dropdown {
-    stroke: rgba(255, 255, 255, 0.5);
-  }
-  &:hover {
-    .dropdown {
-      stroke: rgba(255, 255, 255, 1);
-    }
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
+@include button-reset;
 .date_modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 540px;
-  background-color: #404457;
+  @include theme() {
+    background-color: theme-get("modal-bg") !important;
+  }
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
     inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
   border: solid 0.5px rgba(255, 255, 255, 0.5);
@@ -395,19 +373,26 @@ button {
     .date_modal_title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin: 16px 0 45px 0;
       padding: 0 16px;
+      div {
+        display: flex;
+        align-items: center;
+      }
       svg {
-        fill: rgba(255, 255, 255, 1);
+        @include theme() {
+          fill: theme-get("hover-text") !important;
+          stroke: theme-get("hover-text") !important;
+        }
       }
       span {
-        color: #fff;
+        @include theme() {
+          color: theme-get("hover-text") !important;
+        }
         font-family: Pretendard;
         margin-left: 6px;
         font-weight: 500;
-      }
-      .modal_close_btn {
-        stroke: rgba(255, 255, 255, 1);
       }
     }
     .date_modal_content {
@@ -420,27 +405,35 @@ button {
         font-family: Pretendard;
         font-size: 16px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.5);
+        @include theme() {
+          color: theme-get("none-hover") !important;
+        }
       }
-      .togglediv {
+
+      .date_from_modal_btn {
+        width: 260px;
+        height: 34px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+          background-color: theme-get("modal-contents-bg1") !important;
+        }
+        background-color: rgba(38, 40, 49, 0.5);
+        border-radius: 8px;
         display: flex;
         justify-content: space-between;
         div {
           display: flex;
           align-items: center;
         }
-      }
-      button {
-        width: 260px;
-        height: 34px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-        border: solid 0.5px #fff;
-        background-color: rgba(38, 40, 49, 0.5);
-        border-radius: 8px;
-
         &:hover {
+          @include theme() {
+            border: solid 0.5px theme-get("hover-text") !important;
+          }
           span {
-            color: rgba(255, 255, 255, 1);
+            @include theme() {
+              color: theme-get("hover-text") !important;
+            }
           }
         }
       }
@@ -449,10 +442,12 @@ button {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         button {
           display: flex;
           align-items: center;
           position: relative;
+
           svg {
             padding: 0 10px;
           }
@@ -464,7 +459,10 @@ button {
       }
       .date_container {
         position: absolute;
-        background-color: #404457;
+        @include theme() {
+          border: solid 0.5px theme-get("none-hover") !important;
+          background-color: theme-get("modal-contents-bg1") !important;
+        }
         z-index: 999;
         margin-top: 4px;
         width: 520px;
@@ -474,7 +472,7 @@ button {
         .date_wrap {
           display: flex;
           .date_left {
-            width: calc(50% - 16px);
+            width: 520px;
             border-right: 1px solid rgba(255, 255, 255, 0.5);
 
             .date_left_top {
@@ -484,14 +482,25 @@ button {
                 display: flex;
                 justify-content: space-between;
                 button {
-                  color: #fff;
                   display: flex;
                   align-items: center;
                   width: 118px;
                   height: 32px;
-                  background-color: #404457;
+                  @include theme() {
+                    background-color: theme-get(
+                      "modal-contents-bg1"
+                    ) !important;
+                    color: theme-get("none-hover") !important;
+                  }
                   border: 0;
-                  padding: 0 10px;
+                  padding-left: 10px;
+                  &:hover {
+                    @include theme() {
+                      color: theme-get("hover-text") !important;
+                      background-color: theme-get("modal-btn-bg1") !important;
+                      border-radius: 10px;
+                    }
+                  }
                 }
                 .date_month_modal_btn {
                   display: flex;
@@ -502,21 +511,31 @@ button {
                   border-radius: 8px;
                   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
                   border: solid 0.5px rgba(255, 255, 255, 0.5);
-                  background-color: #404457;
+                  @include theme() {
+                    background-color: theme-get("modal-btn-bg1") !important;
+                  }
                   position: absolute;
                   top: 40px;
                   z-index: 999;
                   left: 4px;
                   padding: 4px 0;
                   button {
-                    color: rgba(255, 255, 255, 0.5);
+                    @include theme() {
+                      color: theme-get("none-hover") !important;
+                    }
                     &:hover {
-                      width: 108px;
-                      margin: 0 auto;
-                      background-color: rgba(255, 255, 255, 0.08);
-                      border-radius: 8px;
-                      padding: 5px;
-                      color: rgba(255, 255, 255, 1);
+                      border-radius: 10px;
+                      @include theme() {
+                        color: theme-get("hover-text") !important;
+                        background-color: theme-get("modal-btn-bg1") !important;
+                      }
+                    }
+                  }
+                }
+                div {
+                  &:hover {
+                    span {
+                      color: #fff;
                     }
                   }
                 }
@@ -524,10 +543,12 @@ button {
               .date_left_top_span_wrap {
                 display: flex;
                 justify-content: space-between;
-                color: #fff;
                 padding-left: 5px;
                 span {
                   width: 23px;
+                  @include theme() {
+                    color: theme-get("none-hover") !important;
+                  }
                 }
               }
             }
@@ -543,14 +564,18 @@ button {
                 button {
                   width: 32px;
                   height: 32px;
-                  background-color: #4f5364;
+                  @include theme() {
+                    background-color: theme-get("modal-btn-bg1") !important;
+                    color: theme-get("hover-text") !important;
+                  }
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  color: rgba(255, 255, 255, 1);
+
                   border: 0;
                   border-radius: 8px;
                 }
+
                 .date_none {
                   opacity: 0;
                   cursor: default;
@@ -591,7 +616,9 @@ button {
                   font-size: 32px;
                   font-weight: 500;
                   font-family: Pretendard;
-                  color: #fff;
+                  @include theme() {
+                    color: theme-get("none-hover") !important;
+                  }
                 }
                 .date_gray {
                   color: rgba(255, 255, 255, 0.5);
@@ -604,10 +631,16 @@ button {
     }
     .date_modal_quick_wrap {
       margin-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      @include theme() {
+        border-top: 1px solid theme-get("none-hover") !important;
+      }
       padding: 32px 59px;
       span {
-        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+        font-family: Pretendard;
+        @include theme() {
+          color: theme-get("none-hover") !important;
+        }
       }
       .date_modal_quick {
         display: flex;
@@ -627,7 +660,9 @@ button {
     .date_modal_apply_wrap {
       display: flex;
       justify-content: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      @include theme() {
+        border-top: 1px solid theme-get("none-hover") !important;
+      }
       button {
         border: 0.5px solid rgba(255, 255, 255, 1);
         width: 120px;
@@ -658,26 +693,13 @@ button {
       }
       .blue_btn {
         background-color: #4199ff;
+        color: #fff;
       }
-    }
-  }
-}
-
-button {
-  svg {
-    fill: rgba(255, 255, 255, 0.5);
-  }
-  &:hover {
-    span {
-      color: rgba(255, 255, 255, 1);
-    }
-    svg {
-      fill: rgba(255, 255, 255, 1);
-      path {
-        fill: rgba(255, 255, 255, 1);
-      }
-      .modal_arrow_icon {
-        stroke: rgba(255, 255, 255, 1);
+      .gray_btn {
+        @include theme() {
+          background-color: theme-get("modal-gray-btn") !important;
+          color: theme-get("modal-gray-text") !important;
+        }
       }
     }
   }

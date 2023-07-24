@@ -141,6 +141,10 @@
                   </div>
                 </div>
               </div>
+              <div class="save_modal_file_name">
+                <span>File Name</span>
+                <input class="save_file_name_input" type="text" />
+              </div>
               <div class="save_modal_footer">
                 <button @click="closeSaveModal" class="save_modal_btn blue_btn">
                   OK
@@ -415,7 +419,6 @@ import SaveNew from "@/components/svg/SaveNew.vue";
 @import "@/assets/scss/theme.scss";
 @include button-reset;
 .outer {
-  background-color: #1b1c21;
   @include theme() {
     background-color: theme-get("bg-color1") !important;
   }
@@ -425,9 +428,8 @@ import SaveNew from "@/components/svg/SaveNew.vue";
     height: 100%;
   }
   .sql_left {
-    background-color: #1b1c21;
     @include theme() {
-      background-color: theme-get("bg-color1") !important;
+      background-color: theme-get("sql-bg") !important;
     }
     width: 50%;
     height: 100%;
@@ -439,13 +441,11 @@ import SaveNew from "@/components/svg/SaveNew.vue";
       position: absolute;
       top: 0;
       right: 0;
-      background-color: #262831;
       @include theme() {
         background-color: theme-get("bg-color1") !important;
       }
     }
     .sql_tab_left {
-      background-color: #262831;
       @include theme() {
         background-color: theme-get("bg-color1") !important;
       }
@@ -461,12 +461,8 @@ import SaveNew from "@/components/svg/SaveNew.vue";
         justify-content: space-between;
         border-radius: 10px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
         @include theme() {
           border: solid 0.5px theme-get("none-hover") !important;
-        }
-        background-color: #262831;
-        @include theme() {
           background-color: theme-get("btn-bg") !important;
         }
         width: 256px;
@@ -483,7 +479,6 @@ import SaveNew from "@/components/svg/SaveNew.vue";
           font-family: Pretendard;
           font-size: 16px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.5);
           @include theme() {
             color: theme-get("none-hover") !important;
           }
@@ -493,6 +488,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
           right: 0px;
         }
         @include hover-border;
+        &:hover {
+          span {
+            @include theme() {
+              color: theme-get("hover-text") !important;
+            }
+          }
+        }
       }
       .sql_save_btn {
         position: absolute;
@@ -504,16 +506,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
         left: 50%;
         transform: translate(-50%, -50%);
         width: 780px;
-        background-color: #404457;
         @include theme() {
-          color: solid 0.5px theme-get("modal-bg") !important;
+          background-color: theme-get("modal-bg") !important;
+          border: solid 0.5px theme-get("none-hover") !important;
         }
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16),
           inset 0 -1px 8px 0 rgba(0, 0, 0, 0.3);
-        border: solid 0.5px rgba(255, 255, 255, 0.5);
-        @include theme() {
-          border: solid 0.5px theme-get("none-hover") !important;
-        }
+
         border-radius: 10px;
         z-index: 999;
         .save_modal_wrap {
@@ -523,19 +522,14 @@ import SaveNew from "@/components/svg/SaveNew.vue";
             align-items: center;
             padding: 24px 30px 28px 26px;
             svg {
-              fill: rgba(255, 255, 255, 1);
               @include theme() {
-                fill: solid 0.5px theme-get("hover-text") !important;
-              }
-              stroke: rgba(255, 255, 255, 1);
-              @include theme() {
-                stroke: solid 0.5px theme-get("hover-text") !important;
+                fill: theme-get("text-main-title") !important;
+                stroke: theme-get("text-main-title");
               }
             }
             span {
-              color: rgba(255, 255, 255, 1);
               @include theme() {
-                color: solid 0.5px theme-get("hover-text") !important;
+                color: theme-get("text-main-title") !important;
               }
             }
             div {
@@ -556,29 +550,46 @@ import SaveNew from "@/components/svg/SaveNew.vue";
             }
             .save_modal_top_adress_btn {
               margin: 0 8px;
-              width: 566px;
+              width: 580px;
               height: 34px;
               border-radius: 8px;
               box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px rgba(255, 255, 255, 0.5);
-              background-color: rgba(38, 40, 49, 0.5);
+              @include theme() {
+                border: solid 0.5px theme-get("none-hover") !important;
+                background-color: theme-get("modal-contents-bg") !important;
+              }
               display: flex;
               align-items: center;
               padding-left: 10px;
+              &:hover {
+                @include theme() {
+                  border: solid 0.5px theme-get("text-main-title") !important;
+                }
+              }
             }
           }
           .save_modal_contents {
             height: 300px;
             width: calc(100% - 1px);
-            border: solid 0.5px #9c9da6;
-            background-color: rgba(38, 40, 49, 0.5);
+            @include theme() {
+              background-color: theme-get("modal-contents-bg") !important ;
+              border: solid 0.5px theme-get("none-hover") !important ;
+            }
+            svg {
+              @include theme() {
+                fill: theme-get("text-main-title") !important;
+                stroke: theme-get("text-main-title");
+              }
+            }
             .save_modal_contents_title {
               display: flex;
               font-family: Pretendard;
               font-size: 12px;
               font-weight: 500;
-              color: rgba(255, 255, 255, 0.5);
-              border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+              @include theme() {
+                color: theme-get("none-hover") !important ;
+                border-bottom: 0.5px solid theme-get("none-hover") !important ;
+              }
               padding: 4px 0;
               .save_modal_name {
                 width: 47%;
@@ -597,7 +608,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
                 font-family: Pretendard;
                 font-size: 16px;
                 font-weight: 500;
-                color: #fff;
+                @include theme() {
+                  color: theme-get("text-main-title") !important;
+                }
                 .save_modal_name {
                   width: 47%;
                   margin-left: 24px;
@@ -628,6 +641,41 @@ import SaveNew from "@/components/svg/SaveNew.vue";
               }
             }
           }
+          .save_modal_file_name {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            padding: 0 26px;
+            input {
+              margin: 0 8px;
+              width: 618px;
+              height: 34px;
+              border-radius: 8px;
+              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+              @include theme() {
+                border: solid 0.5px theme-get("none-hover") !important;
+                background-color: theme-get("modal-contents-bg") !important;
+                color: theme-get("hover-text") !important ;
+              }
+              display: flex;
+              align-items: center;
+              padding-left: 10px;
+              &:hover {
+                @include theme() {
+                  border: solid 0.5px theme-get("text-main-title") !important;
+                }
+              }
+            }
+            span {
+              @include theme() {
+                color: theme-get("hover-text") !important ;
+              }
+              font-family: Pretendard;
+              font-size: 14px;
+              font-weight: 500;
+              margin-right: 8px;
+            }
+          }
           .save_modal_footer {
             display: flex;
             justify-content: center;
@@ -638,9 +686,10 @@ import SaveNew from "@/components/svg/SaveNew.vue";
               height: 40px;
               border-radius: 8px;
               box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-              border: solid 0.5px #d9d9d9;
+              @include theme() {
+                border: solid 0.5px theme-get("none-hover") !important;
+              }
               background-color: rgba(255, 255, 255, 0.2);
-              color: rgba(255, 255, 255, 1);
               margin-right: 8px;
               position: relative;
 
@@ -658,9 +707,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
             }
             .last {
               margin-right: 0;
+              @include theme() {
+                color: theme-get("cancel-btn-text") !important;
+              }
             }
             .blue_btn {
               background-color: #4199ff;
+              color: #fff !important;
             }
           }
         }
@@ -672,7 +725,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
     }
   }
   .sql_right {
-    background-color: #1b1c21;
+    @include theme() {
+      background-color: theme-get("sql-bg") !important;
+    }
     width: 50%;
     height: 100%;
     position: relative;
@@ -680,20 +735,12 @@ import SaveNew from "@/components/svg/SaveNew.vue";
     .sql_tab_right {
       height: 54px;
       padding-left: 16px;
-      background-color: #262831;
+      @include theme() {
+        background-color: theme-get("bg-color1") !important;
+      }
       display: flex;
       align-items: center;
       position: relative;
-      button {
-        svg {
-          fill: rgba(255, 255, 255, 0.5);
-        }
-        &:hover {
-          svg {
-            fill: rgba(255, 255, 255, 1);
-          }
-        }
-      }
       .sql_vertical {
         position: absolute;
         top: 6px;
@@ -711,9 +758,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.2);
+        @include theme() {
+          background-color: theme-get("sql-select-btn") !important;
+        }
         svg {
-          fill: rgba(255, 255, 255, 1);
+          @include theme() {
+            fill: theme-get("text-main-title") !important;
+          }
         }
       }
       .sql_right_tab_btn {
@@ -729,13 +780,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
         }
         &:hover {
           svg {
-            fill: #fdb532;
+            fill: #fdb532 !important;
             path {
-              fill: #fdb532;
+              fill: #fdb532 !important;
             }
           }
           span {
-            color: #fdb532;
+            color: #fdb532 !important;
           }
         }
       }
@@ -743,7 +794,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
     .sql_tab_select {
       border-top-right-radius: 10px;
       border-top-left-radius: 10px;
-      background-color: #101010;
+      @include theme() {
+        background-color: theme-get("sql-select") !important;
+      }
       position: relative;
       font-family: Pretendard;
       font-size: 18px;
@@ -758,7 +811,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
       .sql_round_right_wrap {
         width: 15px;
         height: 15px;
-        background-color: #101010;
+        @include theme() {
+          background-color: theme-get("sql-select") !important;
+        }
         position: absolute;
         bottom: 0;
         left: -15px;
@@ -768,7 +823,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
           width: 15px;
           height: 15px;
           border-radius: 0 0 80% 0;
-          background-color: #262831;
+          @include theme() {
+            background-color: theme-get("sql-select-btn-bg") !important;
+          }
           position: absolute;
           bottom: 0;
           left: 0px;
@@ -778,7 +835,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
       .sql_round_left_wrap {
         width: 15px;
         height: 15px;
-        background-color: #101010;
+        @include theme() {
+          background-color: theme-get("sql-select") !important;
+        }
         position: absolute;
         bottom: 0;
         right: -15px;
@@ -789,7 +848,9 @@ import SaveNew from "@/components/svg/SaveNew.vue";
           width: 15px;
           height: 15px;
           border-radius: 0 0 0 80%;
-          background-color: #262831;
+          @include theme() {
+            background-color: theme-get("sql-select-btn-bg") !important;
+          }
           position: absolute;
           bottom: 0;
           right: 0;
@@ -800,9 +861,13 @@ import SaveNew from "@/components/svg/SaveNew.vue";
       font-family: Pretendard;
       font-size: 18px;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.5);
+      @include theme() {
+        color: theme-get("none-hover") !important;
+      }
       svg {
-        fill: #262831;
+        @include theme() {
+          fill: theme-get("none-hover") !important;
+        }
       }
     }
   }
@@ -822,13 +887,17 @@ import SaveNew from "@/components/svg/SaveNew.vue";
         td {
           padding-left: 36px;
           font-family: D2Coding;
-          color: #fff;
+          @include theme() {
+            color: theme-get("text-main-title") !important;
+          }
           font-size: 16px;
           height: 24px;
         }
       }
       .back_gray {
-        background-color: rgba(255, 255, 255, 0.04);
+        @include theme() {
+          background-color: theme-get("sql-contents-bg") !important;
+        }
       }
     }
   }
